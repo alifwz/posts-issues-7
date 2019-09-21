@@ -93,7 +93,7 @@ include "headerinvitation.php";
 			$converted_startdate = converToTz($startdate, $timezone, $dbtimezone);
 
 			mysql_query("UPDATE freelancer_mmv_member_invitation SET calreadstatus='1' WHERE user_id='$loginid' and acceptedstatus='1'");
-
+add_member_notification($inv_result['invited_userid'], $inv_result['user_id'], 'meet_accepted',1);
 			$clientid = $inv_result[user_id];
 			$query = mysql_query("SELECT * FROM freelancer_mmv_member_master WHERE member_id='$clientid'");
 			$about_res = mysql_fetch_array($query);
@@ -248,7 +248,7 @@ include "headerinvitation.php";
 			$inv_result[location];
 
 			mysql_query("UPDATE freelancer_mmv_member_invitation SET calreadstatus='1' WHERE user_id='$loginid' and acceptedstatus='1'");
-
+add_member_notification($inv_result['invited_userid'], $inv_result['user_id'], 'meet_accepted',1);
 			$clientid = $inv_result[invited_userid];
 			$query = mysql_query("SELECT * FROM freelancer_mmv_member_master WHERE member_id='$clientid'");
 			$about_res = mysql_fetch_array($query);

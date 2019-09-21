@@ -118,4 +118,18 @@ function converToTz($time="",$toTz='',$fromTz=''){
 	return $time;
 	
 }
+
+function add_member_notification($from, $to, $action, $status = 0) {
+    //If status not sent then it will Enter new entry in freelancer_mmv_member_notifications table...
+    // If Status = 1 sent then it will Update row and mark as notification read.
+    $nowdate = date('Y-m-d H:i:s');
+    if ($status == 0) {
+        $query_res = mysql_query("INSERT INTO `freelancer_mmv_member_notifications` (`from_user_id`, `to_user_id`, `action`, `status`, `added_on`, `modified_on`) "
+                . "VALUES ('" . $from . "', '" . $to . "', '" . $action . "', '" . $status . "', '" . $nowdate . "', '" . $nowdate . "');");
+    } else {
+        $query_res = mysql_query("UPDATE `freelancer_mmv_member_notifications` SET `status` = '1',`modified_on`='" . $nowdate . "' WHERE `from_user_id` = '" . $from . "' AND `to_user_id`='" . $to . "' AND `action`='" . $action . "';");
+    }
+    return $query_res;
+}
+
 ?>

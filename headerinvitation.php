@@ -79,32 +79,43 @@ if($loginid!=""){
 		<?php } ?>
 			<img src="images/bell-icon.png" alt="Bell"/>			
 				<?php
-				$banner_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND readstatus=0");
-				$banner_result = mysql_num_rows($banner_que);
-				
-				$cal_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where invited_userid='$loginid' AND invitedreadstatus=0");
-				$cal_result = mysql_num_rows($cal_que);
-				
-				$inviread_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND calreadstatus=0");
-				$inviread_result = mysql_num_rows($inviread_que);
-				
-				$cal_que1 = mysql_query("SELECT * from freelancer_mmv_member_invitation where status=1 AND user_id='$loginid' AND acceptedstatus=1 AND calreadstatus=0");
-				$cal_result1 = mysql_num_rows($cal_que1);
-				
-				$cal_que1 = mysql_query("SELECT * from freelancer_mmv_member_invitation where status=1 AND invited_userid='$loginid' AND acceptedstatus=1 AND calreadstatus=0");
-				$cal_result2 = mysql_num_rows($cal_que1);
-				
-				$fav_que = mysql_query("SELECT * from freelancer_mmv_favourites where userid='$loginid' AND favstatus=0");
-				$fav_result = mysql_num_rows($fav_que);
-				$fav_que1 = mysql_query("SELECT * from freelancer_mmv_favourites where memberid='$loginid' AND favstatus=0");
-				$fav_result1 = mysql_num_rows($fav_que1);
-				
-				$like_que1 = mysql_query("SELECT * from freelancer_mmv_member_like where memberid='$loginid' AND readstatus=0");
-				$like_result1 = mysql_num_rows($like_que1);
-				
-				$mes_que = mysql_query("SELECT * from freelancer_mmv_chatmsgs where userid='$loginid' AND readstatus=0");
-				$mes_result = mysql_num_rows($mes_que);
-				if($mes_result!=0 || $banner_result!=0 || $fav_result!=0 || $fav_result1!=0 || $mes_result!=0 || $like_result1!=0 || $cal_result!=0 || $cal_result1!=0 || $cal_result2!=0){
+				$getNoti = "SELECT * FROM `freelancer_mmv_member_notifications` WHERE `to_user_id` = '".$loginid."' AND `status` = 0";
+                                    $notiRes = mysql_query($getNoti);
+                                    $notiRow = mysql_num_rows($notiRes);
+
+//                                echo "SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND readstatus=0";
+                                    /* $banner_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND readstatus=0 AND status = 1 AND date>='$nowdate'");
+                                    $banner_result = mysql_num_rows($banner_que);
+//                                echo $banner_result;
+                                    $cal_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where invited_userid='$loginid' AND invitedreadstatus=0 AND status = 1 AND date>='$nowdate'");
+                                    $cal_result = mysql_num_rows($cal_que);
+
+//                                echo $cal_result;
+                                    $cal_que1 = mysql_query("SELECT * from freelancer_mmv_member_invitation where status=1 AND user_id='$loginid' AND acceptedstatus=1 AND calreadstatus=0 AND date>='$nowdate'");
+                                    $cal_result1 = mysql_num_rows($cal_que1);
+//                                echo $cal_result1;
+                                    $cal_que1 = mysql_query("SELECT * from freelancer_mmv_member_invitation where status=1 AND invited_userid='$loginid' AND acceptedstatus=1 AND calreadstatus=0 AND date>='$nowdate'");
+                                    $cal_result2 = mysql_num_rows($cal_que1);
+
+                                    $cal_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND calreadstatus=0 AND date>='$nowdate'");
+                                    $inviread_result = mysql_num_rows($cal_que); */
+//echo $inviread_result;
+                                    $fav_que = mysql_query("SELECT * from freelancer_mmv_favourites where userid='$loginid' AND favstatus=0");
+                                    $fav_result = mysql_num_rows($fav_que);
+//                                echo $fav_result;
+                                    $fav_que1 = mysql_query("SELECT * from freelancer_mmv_favourites where memberid='$loginid' AND favstatus=0");
+                                    $fav_result1 = mysql_num_rows($fav_que1);
+//                                echo $fav_result1;
+                                    $like_que1 = mysql_query("SELECT * from freelancer_mmv_member_like where memberid='$loginid' AND readstatus=0");
+                                    $like_result1 = mysql_num_rows($like_que1);
+//                                echo $like_result1;
+                                    $mes_que = mysql_query("SELECT * from freelancer_mmv_chatmsgs where userid='$loginid' AND readstatus=0");
+                                    $mes_result = mysql_num_rows($mes_que);
+//                                echo $mes_result;
+//                                if ($mes_result != 0 || $banner_result != 0 || $fav_result != 0 || $fav_result1 != 0 || $mes_result != 0 || $like_result1 != 0 || $cal_result != 0 || $cal_result1 != 0 || $cal_result2 != 0) {
+                                   
+
+                                    if ($fav_result != 0 || $fav_result1 != 0 || $like_result1 != 0 || $mes_result != 0 || $notiRow !=0) {
 			?>
 				<div class="bell-notify red"><span></span></div>
 			<?php } ?>			

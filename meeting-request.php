@@ -64,9 +64,9 @@ if(isset($_POST[submit])){
 	foreach($splitmeeters as $invikeys){
 		
 		$query2 = mysql_query("INSERT INTO freelancer_mmv_member_invitation (invitation_id, user_id, invited_userid, hours_minutes, meeting_topics, photoshooting, offeredprice, date, 	location, meetingdate, status, invitationtype, senderedit, receiveredit, what3word, timezone, invitation_return_reviewto, invitation_return_reviewby) VALUES ('', '$loginid','$invikeys','$hoursmin','$meetingtopics','$photoshoot','$offeredprice',NOW(),'$location','$meetingdate','$status','1','0','1','$what3word','$timezone','$invikeys','$loginid')");
-		
 		$inserid[] = mysql_insert_id();			
 		$totainv = implode('-',$inserid);
+                add_member_notification($loginid, $invikeys, 'meet_request');
 	}	
 	
 	if($query2==1){

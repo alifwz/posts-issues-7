@@ -112,8 +112,13 @@ if ($loginid != "") {
                                     <img src="images/bell-icon.png" alt="Bell"/>
                                     <?php
                                     $nowdate = date('Y-m-d H:i:s');
+                                    
+                                    $getNoti = "SELECT * FROM `freelancer_mmv_member_notifications` WHERE `to_user_id` = '".$loginid."' AND `status` = 0";
+                                    $notiRes = mysql_query($getNoti);
+                                    $notiRow = mysql_num_rows($notiRes);
+
 //                                echo "SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND readstatus=0";
-                                    $banner_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND readstatus=0 AND status = 1 AND date>='$nowdate'");
+                                    /* $banner_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND readstatus=0 AND status = 1 AND date>='$nowdate'");
                                     $banner_result = mysql_num_rows($banner_que);
 //                                echo $banner_result;
                                     $cal_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where invited_userid='$loginid' AND invitedreadstatus=0 AND status = 1 AND date>='$nowdate'");
@@ -127,7 +132,7 @@ if ($loginid != "") {
                                     $cal_result2 = mysql_num_rows($cal_que1);
 
                                     $cal_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND calreadstatus=0 AND date>='$nowdate'");
-                                    $inviread_result = mysql_num_rows($cal_que);
+                                    $inviread_result = mysql_num_rows($cal_que); */
 //echo $inviread_result;
                                     $fav_que = mysql_query("SELECT * from freelancer_mmv_favourites where userid='$loginid' AND favstatus=0");
                                     $fav_result = mysql_num_rows($fav_que);
@@ -142,7 +147,9 @@ if ($loginid != "") {
                                     $mes_result = mysql_num_rows($mes_que);
 //                                echo $mes_result;
 //                                if ($mes_result != 0 || $banner_result != 0 || $fav_result != 0 || $fav_result1 != 0 || $mes_result != 0 || $like_result1 != 0 || $cal_result != 0 || $cal_result1 != 0 || $cal_result2 != 0) {
-                                    if ($banner_result != 0 || $fav_result != 0 || $fav_result1 != 0 || $cal_result != 0 || $cal_result1 != 0 || $cal_result2 != 0) {
+                                   
+
+                                    if ($fav_result != 0 || $fav_result1 != 0 || $like_result1 != 0 || $mes_result != 0 || $notiRow !=0) {
 //                                    echo 'herere';
                                         ?>
                                         <div class="<?php

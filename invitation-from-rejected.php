@@ -13,7 +13,7 @@ $inv_result = mysql_fetch_array($inv_que);
 $clientid = $inv_result[user_id];
 
 mysql_query("UPDATE freelancer_mmv_member_invitation SET readstatus='1' WHERE invitation_id='$invid'");
-
+add_member_notification( $inv_result['invited_userid'],$loginid, 'meet_rejected',1);
 $query = mysql_query("SELECT * FROM freelancer_mmv_member_master WHERE member_id='$clientid'");
 $about_res = mysql_fetch_array($query);
 

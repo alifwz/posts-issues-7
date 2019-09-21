@@ -26,6 +26,7 @@ $completedate2 = date('d M Y H:i a',$strtTime2);
 //echo "SELECT * from freelancer_mmv_member_invitation where acceptedstatus=1 AND invited_userid=$loginid AND (meetingdate>='$orgdate' AND meetingdate<= '$completedate2')";
 
 mysql_query("UPDATE freelancer_mmv_member_invitation SET readstatus='1' WHERE invitation_id='$invid'");
+add_member_notification($clientid, $invited_userid, 'meet_request',1);
 
 if($clientid!=$loginid){
 	$query = mysql_query("SELECT * FROM freelancer_mmv_member_master WHERE member_id='$clientid'");
@@ -93,6 +94,7 @@ if(isset($_POST[submit])){
 		echo "<script>window.location='hire-detail-receiver.php?id=$invid&status=alreadyset'</script>";
 	} else {
 		$qqq = mysql_query("UPDATE freelancer_mmv_member_invitation SET acceptedstatus='1' WHERE invitation_id='$invid'");
+                add_member_notification($invited_userid, $clientid, 'meet_accepted');
 	}
 			
 	if($qqq){
@@ -102,6 +104,7 @@ if(isset($_POST[submit])){
 
 if(isset($_POST[reject])){				
 	$qqq = mysql_query("UPDATE freelancer_mmv_member_invitation SET acceptedstatus='2' WHERE invitation_id='$invid'");	
+        add_member_notification( $invited_userid,$clientid, 'meet_rejected');
 	if($qqq){
 		
 		$clieinfo 	= getUserinfo($clientid);
