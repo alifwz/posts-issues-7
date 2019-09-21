@@ -34,7 +34,7 @@ if(isset($_POST[submit])){
 		
 		$clieinfo 	= getUserinfo($clientid);
 		$userinfo 	= getUserinfo($loginid);
-		
+		add_member_notification($loginid, $clientid, 'invite_accepted');
 		$tou = $clieinfo[1];
 		$fullname = $clieinfo[3].' '.$clieinfo[4];
 		$subjectu = "Freelancer Invitation";			
@@ -105,7 +105,7 @@ if(isset($_POST[reject])){
 		
 		$clieinfo 	= getUserinfo($clientid);
 		$userinfo 	= getUserinfo($loginid);
-		
+		add_member_notification( $loginid,$clientid, 'invite_rejected');
 		$tou = $clieinfo[1];
 		$fullname = $clieinfo[3].' '.$clieinfo[4];
 		$subjectu = "Freelancer Invitation";			

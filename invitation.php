@@ -21,6 +21,9 @@ add_member_notification(0, $loginid, 'meet_request',1);
 add_member_notification(0, $loginid, 'meet_accepted',1);
 add_member_notification(0, $loginid, 'meet_rejected',1);
 add_member_notification(0, $loginid, 'meet_edited',1);
+add_member_notification(0, $loginid, 'invite_request',1);
+add_member_notification(0, $loginid, 'invite_accepted',1);
+add_member_notification(0, $loginid, 'invite_rejected',1);
 ?>
 <style>
     .job-dtl h3 {

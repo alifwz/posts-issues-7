@@ -44,7 +44,8 @@ if(isset($_POST[submitinv])){
 		$query = mysql_query("INSERT INTO freelancer_mmv_member_invitation (invitation_id, user_id, invited_userid, hours_minutes, meeting_topics, photoshooting, offeredprice, date, location, meetingdate, invitationtype, status, what3word, timezone, invitation_return_reviewto, invitation_return_reviewby) VALUES ('', '$loginid','$keys','','$meetingtopics','','',NOW(),'$location','$datetime','2','$status','$what3word','$timezone','$keys','$loginid')");
 		$inserid[] = mysql_insert_id();
 		
-		$totainv = implode('-',$inserid);			
+		$totainv = implode('-',$inserid);	
+                add_member_notification($loginid, $keys, 'invite_request');
 	}
 		
 	if($query){
