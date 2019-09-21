@@ -72,7 +72,7 @@ if(isset($_POST[submit])){
 			$clieinfo 	= getUserinfo($userid);
 			$userinfo 	= getUserinfo($loginid);
 		}
-
+                add_member_notification($loginid,$clieinfo[0], 'meet_edited');
 		$tou = $clieinfo[1];
 		$fullname = $clieinfo[3].' '.$clieinfo[4];
 		$subjectu = "Freelancer Invitation";

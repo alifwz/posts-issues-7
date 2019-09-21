@@ -17,6 +17,10 @@ include "auth.php";
 
 mysql_query("UPDATE freelancer_mmv_member_invitation SET userreadstatus='1' WHERE user_id='$loginid'");
 mysql_query("UPDATE freelancer_mmv_member_invitation SET invitedreadstatus='1' WHERE invited_userid='$loginid'");
+add_member_notification(0, $loginid, 'meet_request',1);
+add_member_notification(0, $loginid, 'meet_accepted',1);
+add_member_notification(0, $loginid, 'meet_rejected',1);
+add_member_notification(0, $loginid, 'meet_edited',1);
 ?>
 <style>
     .job-dtl h3 {

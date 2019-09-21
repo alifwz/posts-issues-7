@@ -26,7 +26,7 @@ $completedate2 = date('d M Y H:i a',$strtTime2);
 //echo "SELECT * from freelancer_mmv_member_invitation where acceptedstatus=1 AND invited_userid=$loginid AND (meetingdate>='$orgdate' AND meetingdate<= '$completedate2')";
 
 mysql_query("UPDATE freelancer_mmv_member_invitation SET readstatus='1' WHERE invitation_id='$invid'");
-add_member_notification($clientid, $invited_userid, 'meet_request',1);
+
 
 if($clientid!=$loginid){
 	$query = mysql_query("SELECT * FROM freelancer_mmv_member_master WHERE member_id='$clientid'");
