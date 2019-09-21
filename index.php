@@ -1,4 +1,8 @@
 <?php
+$page_title = 'Meetfreelancers | Best Freelance Meeting Site';
+$seo_title = 'Meetfreelancers | Best Freelance Meeting Site';
+$seo_description = "Meetfreelancers.com is the world's best freelancing and marketplace to meet and invite freelancers around the world.";
+$seo_keywords = 'meetfreelancers,jobs,meet,hire,work,employee,employer,freelancers,money,earn,influencer,register,new,webapp,rating,interested,invite,list,chat,date,friends,users,free,opportunity,experience,help,find,view,creative,web design';
 session_start();
 include "connection.php";
 include "header.php";
@@ -13,8 +17,22 @@ if ($_SESSION[countryid] == "") {
 }
 
 if (isset($_POST[abuse])) {
+  if (!isset($_SESSION['SESS_MEMBER_ID']) || empty($_SESSION['SESS_MEMBER_ID'])) {
+    echo "<script>window.location='index.php?status=failed'</script>";
+    die;
+  }
+  if (!isset($_POST[postid]) || empty($_POST[postid])) {
+    echo "<script>window.location='index.php?status=failed'</script>";
+    die;
+  }
     $content = $_POST[content];
     $postid = $_POST[postid];
+    $postSql = mysql_query("select * from freelancer_mmv_userimages WHERE id=$postid");
+    $imgcount = mysql_num_rows($postSql);
+    if ($imgcount == 0) {
+      echo "<script>window.location='index.php?status=failed'</script>";
+      die;
+    }
 
     $abuse_que = mysql_query("INSERT INTO freelancer_mmv_abuse(`id`, `abuserid`, `postid`, `content`, `date`) VALUES ('','$loginid','$postid','$content',NOW())");
 
@@ -48,21 +66,21 @@ if (isset($_POST[abuse])) {
 			<tr>
 				<td style="-moz-hyphens: none;-webkit-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font-family:Open Sans,Arial,Helvetica,sans-serif;font-size:20px;line-height: 25px;color: #ac5e2a;border-collapse: collapse;padding: 15px;padding:10px 20px">Dear Admin,</td>
 			</tr>
-			<tr>		
+			<tr>
 				<td style="-moz-hyphens: none;-webkit-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font-family:Open Sans,Arial,Helvetica,sans-serif;font-size: 15px;line-height: 25px;color: #000;border-collapse: collapse;padding:10px 20px">
 					You have received an REPORT/ABUSE from <h3>' . $fullname . '</h3> please login to Freelancer Admin and check for more information.
 				</td>
 			</tr>
-			<tr>		
+			<tr>
 				<td style="padding:10px 20px 15px 20px">
 					<a target="_blank" href="' . $urlpath . 'meet-admin/reportabuse.php" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:Poppins,Open Sans,Arial,Helvetica,sans-serif;color:#ffffff;padding-top: 7px;padding-right:18px;padding-bottom:10px;padding-left:18px;display:inline-block;border:1px solid #red;text-decoration:none;cursor:pointer;background:red;font-size:16px">Check in CMS</a>
 				</td>
-			</tr>			
-			<tr>		
+			</tr>
+			<tr>
 				<td style="-moz-hyphens: none;-webkit-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font-family:Open Sans,Arial,Helvetica,sans-serif;font-size: 15px;line-height: 25px;color: #000;border-collapse: collapse;padding:10px 20px 10px 20px">
 					Thanks,<br>Freelancer.
 				</td>
-			</tr>	
+			</tr>
 		</table>
 		</td></tr>
 		</table>
@@ -109,8 +127,8 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
     #video{object-fit: cover; height:430px;}
 </style>
 <!--start main-->
-<div class="main">		
-    <section class="contenets-main">	
+<div class="main">
+    <section class="contenets-main">
         <?php
         if ($pid != "") {
             $about_que = mysql_query("SELECT * from freelancer_mmv_userimages where id='$pid' AND status=1 AND userid!='' ORDER BY id DESC");
@@ -140,66 +158,40 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                             <a href="<?php echo $url; ?>" target="_blank" class="view-website">View website</a>
                         <?php } ?>
                         <div class="doted-main">
-                            <?php
-                            if ($uid != $loginid && $loginid != "") {
-                                $login_que = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$loginid'");
-                                $login_result = mysql_fetch_array($login_que);
-                                if ($login_result['first_name'] == '' || $login_result['last_name'] == '' || $login_result['country'] == '' || $login_result['nationality'] == '' || $login_result['expsectornew'] == '' || $login_result['hobby'] == '' || $login_result['mbti'] == '' || $login_result['area'] == '') {
-                                    ?>
-                                    <a data-fancybox data-type="inline" data-src="#profilefillPopup">
-                                        <img src="images/dotted-img.png" alt="More"/>
-                                    </a>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <a href="javascript:void(0);" name="abuse" data-index="<?php echo $idd ?>"  class="more-link" data-fancybox="" data-type="inline" data-src="#abuseOption"><img src="images/dotted-img.png" alt="More"/></a>
-                                    <?php
-                                }
-                            } else if ($uid == $loginid && $loginid != "") {
-                                $login_que = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$loginid'");
-                                $login_result = mysql_fetch_array($login_que);
-                                if ($login_result['first_name'] == '' || $login_result['last_name'] == '' || $login_result['country'] == '' || $login_result['nationality'] == '' || $login_result['expsectornew'] == '' || $login_result['hobby'] == '' || $login_result['mbti'] == '' || $login_result['area'] == '') {
-                                    ?>
-                                    <a data-fancybox data-type="inline" data-src="#profilefillPopup" class="more-link">
-                                        <img src="images/dotted-img.png" alt="More"/>
-                                    </a>
-                                    <?php
-                                } else {
-                                    ?>						
-                                    <a href="javascript:void(0);" class="more-link" data-fancybox="" data-type="inline" data-src="#moreLinks<?php echo $idd1; ?>"><img src="images/dotted-img.png" alt="More"/></a>
-                                    <?php
-                                }
-                            } else {
-                                ?>	
+                            <?php if ($uid != $loginid && $loginid != "") { ?>
+                                <a href="javascript:void(0);" name="abuse" data-index="<?php echo $idd ?>"  class="more-link" data-fancybox="" data-type="inline" data-src="#abuseOption"><img src="images/dotted-img.png" alt="More"/></a>
+                            <?php } else if ($uid == $loginid && $loginid != "") { ?>
+                                <a href="javascript:void(0);" class="more-link" data-fancybox="" data-type="inline" data-src="#moreLinks<?php echo $idd1; ?>"><img src="images/dotted-img.png" alt="More"/></a>
+                            <?php } else { ?>
                                 <a href="javascript:void(0);" class="more-link" data-fancybox="" data-type="inline" data-src="#loginPopup"><img src="images/dotted-img.png" alt="More"/></a>
                             <?php } ?>
                         </div>
                     </div>
                 </div>
                 <div class="popbox">
-                    <div id="moreLinks<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">	
+                    <div id="moreLinks<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">
                         <p><a href="javascript:void(0);" data-fancybox="" data-src="#editUrl<?php echo $idd1; ?>" data-type="inline" class="button more-link">Edit URL</a></p>
                         <p><a href="deletecollection.php?id=<?php echo $idd1; ?>&type=delpost" class="button">Delete Post</a></p>
                     </div>
                 </div>
-                <div class="popbox">			
-                    <div id="editUrl<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">	
+                <div class="popbox">
+                    <div id="editUrl<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">
                         <form name="edits" method="post" action="" enctype="multipart/form-data">
-                            <input type="hidden" name="editid" value="<?php echo $idd; ?>">	
+                            <input type="hidden" name="editid" value="<?php echo $idd; ?>">
                             <?php
                             $web_que = mysql_query("SELECT * from freelancer_mmv_userimages where id='$idd' AND status=1");
                             $web_res = mysql_fetch_array($web_que);
                             ?>
                             <p><input type="text" name="weblink" value="<?php echo $web_res[website] ?>" required class="form-control text-align-center inputbg" placeholder="Website URL" id=""></p>
                             <button type="submit" name="submiturl" class="button loginbtn">Submit</button>
-                        </form>	
-                    </div>				
-                </div>			
+                        </form>
+                    </div>
+                </div>
                 <?php
                 $extension = strtolower(end(explode(".", $about_res[image])));
                 if ($extension == "mp4" || $extension == "mov") {
                     $filename = preg_replace('"\.(mp4|MP4|MOV|mov)$"', '.png', $about_res[image]);
-                    ?>			
+                    ?>
                     <div class="contenets-img" align="center">
                             <!--<video style="background-color:black" width="425" height="430" preload="none" controls poster="https://meetfreelancers.com/beta/<?php echo $filename ?>">
                                     <source src="<?php echo $about_res[image]; ?>" type='video/mp4'>
@@ -212,7 +204,7 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                             <source src="<?php echo $about_res[image]; ?>" type="video/ogg">
                             Your browser does not support the video tag.
                         </video>
-                    </div>				
+                    </div>
                 <?php } else { ?>
                     <div class="contenets-img">
                         <img src="<?php echo $about_res[image]; ?>" <?php if ($loginid != "") { ?> ondblclick="mydoubleFunction(<?php echo $about_res[id] ?>)" <?php } ?> alt=""/>
@@ -233,25 +225,14 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                                 </td>
 
                                 <?php if ($uid == $loginid) { ?>
-                                    <td align="center" class="job-title"><a href="profile.php"><?php echo $jobdesc ?></a></td>								
+                                    <td align="center" class="job-title"><a href="profile.php"><?php echo $jobdesc ?></a></td>
                                 <?php } else { ?>
-                                    <td align="center" class="job-title"><a href="viewclient.php?id=<?php echo $uid ?>"><?php echo $jobdesc ?></a></td>								
+                                    <td align="center" class="job-title"><a href="viewclient.php?id=<?php echo $uid ?>"><?php echo $jobdesc ?></a></td>
                                 <?php } ?>
 
                                 <?php
                                 if ($loginid != '') {
-                                    $login_que = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$loginid'");
-                                    $login_result = mysql_fetch_array($login_que);
-                                    if ($login_result['first_name'] == '' || $login_result['last_name'] == '' || $login_result['country'] == '' || $login_result['nationality'] == '' || $login_result['expsectornew'] == '' || $login_result['hobby'] == '' || $login_result['mbti'] == '' || $login_result['area'] == '') {
-                                        ?>
-                                        <td class="likes-div" style="cursor:pointer">
-                                            <i class="fa">&#xf08a;</i> 
-                                            <a data-fancybox data-type="inline" data-src="#profilefillPopup" href="javascript:void(0);">
-                                                <span id="this<?php echo $about_res[id] ?>"><?php echo $count; ?></span> likes
-                                            </a>
-                                        </td>
-                                        <?php
-                                    } else if ($mycount < 1) {
+                                    if ($mycount < 1) {
                                         ?>
                                         <td class="likes-div" style="cursor:pointer"><i id="delete_<?php echo $about_res[id] ?>" class="fa">&#xf08a;</i> <a href="likers.php?ccid=<?php echo $idd; ?>"><span id="this<?php echo $about_res[id] ?>"><?php echo $count; ?></span> likes</a></td>
                                     <?php } else { ?>
@@ -263,14 +244,14 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                                     <td class="likes-div" style="cursor:pointer"><a href="#" data-fancybox data-type="inline" data-src="#loginPopup"><i class="fa">&#xf08a;</i> <?php echo $count; ?> likes</a></td>
                                 <?php } ?>
                             </tr>
-                        </table>					
+                        </table>
                     </div>
                 </div>
             </div>
-        <?php } ?>	
+        <?php } ?>
 
         <!--start job contenets-->
-        <div id="postList">		
+        <div id="postList">
             <?php
             if ($_SESSION[countryid] == "" && $id == "" && $filterid == '') {
                 $about_que1 = mysql_query("SELECT * from freelancer_mmv_userimages where  userid!='' AND status=1 ORDER BY id DESC LIMIT 10");
@@ -325,68 +306,42 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                                     <a href="<?php echo $url; ?>" target="_blank" class="view-website">View website</a>
                                 <?php } ?>
                                 <div class="doted-main">
-                                    <?php
-                                    if ($uid != $loginid && $loginid != "") {
-                                        $login_que = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$loginid'");
-                                        $login_result = mysql_fetch_array($login_que);
-                                        if ($login_result['first_name'] == '' || $login_result['last_name'] == '' || $login_result['country'] == '' || $login_result['nationality'] == '' || $login_result['expsectornew'] == '' || $login_result['hobby'] == '' || $login_result['mbti'] == '' || $login_result['area'] == '') {
-                                            ?>
-                                            <a data-fancybox data-type="inline" data-src="#profilefillPopup" class="more-link">
-                                                <img src="images/dotted-img.png" alt="More"/>
-                                            </a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <a href="javascript:void(0);" name="abuse" data-index="<?php echo $idd ?>"  class="more-link" data-fancybox="" data-type="inline" data-src="#abuseOption"><img src="images/dotted-img.png" alt="More"/></a>
-                                            <?php
-                                        }
-                                    } else if ($uid == $loginid && $loginid != "") {
-                                        $login_que = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$loginid'");
-                                        $login_result = mysql_fetch_array($login_que);
-                                        if ($login_result['first_name'] == '' || $login_result['last_name'] == '' || $login_result['country'] == '' || $login_result['nationality'] == '' || $login_result['expsectornew'] == '' || $login_result['hobby'] == '' || $login_result['mbti'] == '' || $login_result['area'] == '') {
-                                            ?>
-                                            <a data-fancybox data-type="inline" data-src="#profilefillPopup" class="more-link">
-                                                <img src="images/dotted-img.png" alt="More"/>
-                                            </a>
-                                            <?php
-                                        } else {
-                                            ?>						
-                                            <a href="javascript:void(0);" class="more-link" data-fancybox="" data-type="inline" data-src="#moreLinks<?php echo $idd1; ?>"><img src="images/dotted-img.png" alt="More"/></a>
-                                            <?php
-                                        }
-                                    } else {
-                                        ?>	
+                                    <?php if ($uid != $loginid && $loginid != "") { ?>
+                                        <a href="javascript:void(0);" name="abuse" data-index="<?php echo $idd ?>"  class="more-link" data-fancybox="" data-type="inline" data-src="#abuseOption"><img src="images/dotted-img.png" alt="More"/></a>
+                                    <?php } else if ($uid == $loginid && $loginid != "") { ?>
+                                        <a href="javascript:void(0);" class="more-link" data-fancybox="" data-type="inline" data-src="#moreLinks<?php echo $idd1; ?>"><img src="images/dotted-img.png" alt="More"/></a>
+                                    <?php } else { ?>
                                         <a href="javascript:void(0);" class="more-link" data-fancybox="" data-type="inline" data-src="#loginPopup"><img src="images/dotted-img.png" alt="More"/></a>
                                     <?php } ?>
                                 </div>
                             </div>
                         </div>
                         <div class="popbox">
-                            <div id="moreLinks<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">	
+                            <div id="moreLinks<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">
                                 <p><a href="javascript:void(0);" data-fancybox="" data-src="#editUrl<?php echo $idd1; ?>" data-type="inline" class="button more-link">Edit URL</a></p>
                                 <p><a href="deletecollection.php?id=<?php echo $idd1; ?>&type=delpost" class="button">Delete Post</a></p>
                             </div>
                         </div>
 
-                        <div class="popbox">			
-                            <div align="center" id="editUrl<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">	
+                        <div class="popbox">
+                            <div align="center" id="editUrl<?php echo $idd1; ?>" class="popupbox text-align-center abuseOption url-and-post">
                                 <form name="edits" method="post" action="" enctype="multipart/form-data">
-                                    <input type="hidden" name="editid" value="<?php echo $idd1; ?>">	
+                                    <input type="hidden" name="editid" value="<?php echo $idd1; ?>">
                                     <?php
                                     $web_que = mysql_query("SELECT * from freelancer_mmv_userimages where id='$idd1' AND status=1");
                                     $web_res = mysql_fetch_array($web_que);
                                     ?>
                                     <p align="center"><input type="text" name="weblink" value="<?php echo $web_res[website] ?>" required class="form-control text-align-center inputbg" placeholder="Website URL" id=""><br>
                                         <button type="submit" name="submiturl" class="button loginbtn">Submit</button></p>
-                                </form>	
-                            </div>				
+                                </form>
+                            </div>
                         </div>
 
                         <?php
                         $extension = strtolower(end(explode(".", $about_res1[image])));
                         if ($extension == "mp4" || $extension == "mov") {
                             $filename = preg_replace('"\.(mp4|MP4|MOV|mov)$"', '.png', $about_res1[image]);
-                            ?>			
+                            ?>
                             <div class="contenets-img" align="center">
                             <!--<a id="anchor1" onclick="PlayVideo('anchor1','video1');"><img src ="https://meetfreelancers.com/beta/<?php echo $filename ?>" alt="trail" /></a>
                             <video  id="video1" controls="controls" style="display:none" poster="https://meetfreelancers.com/beta/<?php echo $filename ?>">
@@ -395,15 +350,15 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                                     Your browser does not support the video element.
                             </video>
                                     <video style="background-color:black" width="425" height="430" controls >
-                                      <source src="<?php echo $about_res1[image]; ?>" type="video/mp4">				  
+                                      <source src="<?php echo $about_res1[image]; ?>" type="video/mp4">
                                     <img width="425" height="430" src="https://meetfreelancers.com/beta/<?php echo $filename ?>" title="Your browser does not support the <video> tag">
-                                    </video>-->	
+                                    </video>-->
                                 <video id="video" style="background-color:black" width="100%" controls="true" poster="<?php echo $urlpath . $filename; ?>">
                                     <source src="<?php echo $about_res1[image]; ?>" type="video/mp4">
                                     <source src="<?php echo $about_res1[image]; ?>" type="video/ogg">
                                     Your browser does not support the video tag.
-                                </video>				
-                            </div>			
+                                </video>
+                            </div>
                         <?php } else { ?>
                             <div class="contenets-img">
                                 <img class="dbclickimage_<?php echo $about_res1[id]; ?>" id="<?php echo $about_res1[id]; ?>" src="<?php echo $about_res1[image]; ?>" alt=""/>
@@ -424,23 +379,13 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                                         </td>
 
                                         <?php if ($uid == $loginid) { ?>
-                                            <td align="center" class="job-title"><a href="profile.php"><?php echo $jobdesc ?></a></td>								
+                                            <td align="center" class="job-title"><a href="profile.php"><?php echo $jobdesc ?></a></td>
                                         <?php } else { ?>
-                                            <td align="center" class="job-title"><a href="viewclient.php?id=<?php echo $uid ?>"><?php echo $jobdesc ?></a></td>								
+                                            <td align="center" class="job-title"><a href="viewclient.php?id=<?php echo $uid ?>"><?php echo $jobdesc ?></a></td>
                                         <?php } ?>
 
                                         <?php
                                         if ($loginid != '') {
-                                            if ($login_result['first_name'] == '' || $login_result['last_name'] == '' || $login_result['country'] == '' || $login_result['nationality'] == '' || $login_result['expsectornew'] == '' || $login_result['hobby'] == '' || $login_result['mbti'] == '' || $login_result['area'] == '') {
-                                                ?>
-                                                <td class="likes-div" style="cursor:pointer">
-                                                    <i data-fancybox data-type="inline" data-src="#profilefillPopup" href="javascript:void(0);" class="fa">&#xf08a;</i> 
-                                                    <a data-fancybox data-type="inline" data-src="#profilefillPopup" href="javascript:void(0);">
-                                                        <span id="this<?php echo $about_res[id] ?>"><?php echo $count; ?></span> likes
-                                                    </a>
-                                                </td>
-                                                <?php
-                                            } else
                                             if ($mycount < 1) {
                                                 ?>
                                                 <td class="likes-div" style="cursor:pointer"><i id="delete_<?php echo $about_res1[id] ?>" class="fa">&#xf08a;</i> <a href="likers.php?ccid=<?php echo $idd; ?>"><span id="this<?php echo $about_res1[id] ?>"><?php echo $count; ?></span> likes</a></td>
@@ -453,7 +398,7 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                                             <td class="likes-div" style="cursor:pointer"><a href="#" data-fancybox data-type="inline" data-src="#loginPopup"><i class="fa">&#xf08a;</i> <?php echo $count; ?> likes</a></td>
                                         <?php } ?>
                                     </tr>
-                                </table>					
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -465,17 +410,17 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
                 <img src="images/loading.gif"/>
             </div>
         </div>
-        <!--end job contenets-->		
+        <!--end job contenets-->
     </section>
 </div>
 <!--end main-->
 <!--start other popup boxes-->
 <div class="popbox">
     <div id="abuseOption" class="popupbox text-align-center abuseOption">
-        <form name="abuse" method="post" action="">	
+        <form name="abuse" method="post" action="">
             <input type="hidden" name="postid" id="postid" value=""/>
             <h2>report/abuse</h2>
-            <div class="form-group">						
+            <div class="form-group">
                 <textarea name="content" class="form-control"></textarea>
             </div>
             <div class="form-group">
@@ -508,10 +453,10 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
         });
     });
 
-    /*function mydoubleFunction(myval) {	
-     
+    /*function mydoubleFunction(myval) {
+
      var i= myval;
-     //alert(i);   	 	  	 	 		
+     //alert(i);
      $.ajax({
      type:"POST",
      data:"id="+i,
@@ -519,11 +464,11 @@ if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'cat') {
      success:function(data)
      {
      if(data!="")
-     {						
-     $('#this'+i).text(data);					
+     {
+     $('#this'+i).text(data);
      }
      }
-     });     
+     });
      }*/
 </script>
 
