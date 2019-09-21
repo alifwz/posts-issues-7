@@ -338,7 +338,8 @@ if(isset($_POST['profile']))
 						</div>
 						<div class="col-6">
 							
-							<input type="text" maxlength="25" name="jobtitle" id="texts2" value="<?php echo $res[jobtitle] ?>" class="form-control" placeholder="Job Title" style="font-size:16px;" >								
+							<input type="text" maxlength="25" name="jobtitle" id="texts2" value="<?php echo $res[jobtitle] ?>" class="form-control" placeholder="Job Title" pattern="[A-Za-z\s]+" style="font-size:16px;" 
+                           oninput="setCustomValidity(''); checkValidity(); if (validity.patternMismatch) { setCustomValidity('Not allowed numbers, underscores, etc…'); } else if (validity.valueMissing) { setCustomValidity('This field is required.'); } else if (validity.valid) { setCustomValidity(''); }">								
 							
 						</div>						
 					</div>
@@ -412,7 +413,8 @@ if(isset($_POST['profile']))
 						
 						<div class="col-6">
 							
-							<input type="text" name="area" id="texts4" maxlength="25" value="<?php echo $res[area] ?>" required class="form-control" placeholder="Area(of residence)*" oninvalid="this.setCustomValidity('Please select Area(of residence)')" oninput="setCustomValidity('')" style="font-size:14px;">
+							<input type="text" name="area" id="texts4" maxlength="25" value="<?php echo $res[area] ?>" required class="form-control" placeholder="Area(of residence)*" pattern="[A-Za-z\s]+" style="font-size:14px;" 
+                           oninput="setCustomValidity(''); checkValidity(); if (validity.patternMismatch) { setCustomValidity('Not allowed numbers, underscores, etc…'); } else if (validity.valueMissing) { setCustomValidity('This field is required.'); } else if (validity.valid) { setCustomValidity(''); }" style="font-size:14px;">
 								<!--<select name="timing" required id="timing">								 
 									<option value="" selected="selected">Freelance Timing</option>
 									<?php
@@ -428,7 +430,8 @@ if(isset($_POST['profile']))
 						</div>
 						<div class="col-6">
 							<div class="select-box select-style">
-							<input type="text" name="faith" id="texts5" maxlength="25" value="<?php echo $res[faith] ?>" class="form-control" placeholder="Faith" style="font-size:14px;" >
+							<input type="text" name="faith" id="texts5" maxlength="25" value="<?php echo $res[faith] ?>" class="form-control" placeholder="Faith" pattern="[A-Za-z\s]+" style="font-size:14px;" 
+                           oninput="setCustomValidity(''); checkValidity(); if (validity.patternMismatch) { setCustomValidity('Not allowed numbers, underscores, etc…'); } else if (validity.valueMissing) { setCustomValidity('This field is required.'); } else if (validity.valid) { setCustomValidity(''); }" >
 								<!--<select name="faith" id="faith" required>
 									<option value="" selected="selected">Faith</option>
 									<?php
@@ -460,7 +463,7 @@ if(isset($_POST['profile']))
 					</div>						
 				</div>
 				<div class="col-12">
-					<textarea name="talentandexp" id="textss" maxlength="250" class="select-box select-style talent-textarea" placeholder="Explain more about your talent and experience"><?php echo $res[talentandexp]; ?></textarea>					
+					<textarea name="talentandexp" id="textss" maxlength="250" class="select-box select-style talent-textarea" placeholder="Explain more about your talent and experience" ><?php echo $res[talentandexp]; ?></textarea>					
 				</div>				
 				<div class="col-12">
 							<div class="photo-video-main">
@@ -529,8 +532,8 @@ $('.img-wrap .close').on('click', function() {
 		{
 			if(data=="done")
 			{
-				window.location='make-profile.php?status=delete';
-				location.reload();
+				window.location.href='make-profile.php?status=delete';
+			//	location.reload();
 			}
 		}
 	  });
