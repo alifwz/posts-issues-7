@@ -132,13 +132,13 @@ if ($loginid != "") {
                                     $cal_result2 = mysql_num_rows($cal_que1);
 
                                     $cal_que = mysql_query("SELECT * from freelancer_mmv_member_invitation where user_id='$loginid' AND calreadstatus=0 AND date>='$nowdate'");
-                                    $inviread_result = mysql_num_rows($cal_que); */
+                                    $inviread_result = mysql_num_rows($cal_que); 
 //echo $inviread_result;
                                     $fav_que = mysql_query("SELECT * from freelancer_mmv_favourites where userid='$loginid' AND favstatus=0");
                                     $fav_result = mysql_num_rows($fav_que);
 //                                echo $fav_result;
                                     $fav_que1 = mysql_query("SELECT * from freelancer_mmv_favourites where memberid='$loginid' AND favstatus=0");
-                                    $fav_result1 = mysql_num_rows($fav_que1);
+                                    $fav_result1 = mysql_num_rows($fav_que1);*/
 //                                echo $fav_result1;
                                     $like_que1 = mysql_query("SELECT * from freelancer_mmv_member_like where memberid='$loginid' AND readstatus=0");
                                     $like_result1 = mysql_num_rows($like_que1);

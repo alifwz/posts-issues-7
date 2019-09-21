@@ -127,6 +127,8 @@ include "auth.php";
 				/*End*/
 				
 				mysql_query("UPDATE freelancer_mmv_favourites SET favstatus='1' WHERE id='$favworkid'");
+                                
+                                add_member_notification(0, $loginid, 'favourites',1);
 			?>
 			
 			<div class="job-thumb favourite-box">

@@ -20,7 +20,7 @@ if($count>=1){
 		header("location:$_SERVER[HTTP_REFERER]&status=success");
 } else {
 	$query2 = mysql_query("INSERT INTO freelancer_mmv_favourites (`id`,`memberid`,`userid`,`workid`,`date`) VALUES ('','$clientid','$loginid','$workid',NOW())");
-	
+	add_member_notification($loginid, $clientid, 'favourites');
 		$clieinfo 	= getUserinfo($clientid);
 		$userinfo 	= getUserinfo($loginid);
 		
