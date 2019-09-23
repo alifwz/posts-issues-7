@@ -331,7 +331,7 @@ if (isset($_POST['profile'])) {
                             </div>
                             <div class="col-6">						
                                 <div class="select-box select-style">
-                                    <select name="subexpsector" required oninvalid="this.setCustomValidity('Please Select Freelance sub Service')" oninput="setCustomValidity('')" id="subexpsector" class="form-control" style="font-size:14px;">
+                                    <select name="subexpsector" required="" oninvalid="this.setCustomValidity('Please Select Freelance sub Service')" oninput="setCustomValidity('')" id="subexpsector" class="form-control" style="font-size:14px;">
                                         <option value="">Select SubCategory*</option>
                                         <?php
                                         $subcat = $res[subexpsector];
