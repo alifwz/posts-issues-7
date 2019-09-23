@@ -331,8 +331,8 @@ if (isset($_POST['profile'])) {
                             </div>
                             <div class="col-6">						
                                 <div class="select-box select-style">
-                                    <select name="subexpsector" oninvalid="this.setCustomValidity('Please Select Freelance sub Service')" oninput="setCustomValidity('')" id="subexpsector" class="form-control" style="font-size:14px;">
-                                        <option value="">Select SubCategory</option>
+                                    <select name="subexpsector" required oninvalid="this.setCustomValidity('Please Select Freelance sub Service')" oninput="setCustomValidity('')" id="subexpsector" class="form-control" style="font-size:14px;">
+                                        <option value="">Select SubCategory*</option>
                                         <?php
                                         $subcat = $res[subexpsector];
                                         $subcat_query = mysql_query("SELECT * from freelancer_mmv_filter where parent_id='$expid'");
