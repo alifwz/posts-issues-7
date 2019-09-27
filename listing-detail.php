@@ -120,11 +120,125 @@ if(isset($_POST[submit])){
 				<div class="job-row">
 					<div class="detail-div">
 						<h2 class="paddingtop0"><?php echo $about_res[title] ?></h2> 					
-						<?php echo $about_res[description] ?>
 					</div>
 				</div>
 			</div>
-			<div class="job-thumb favourite-box">
+			<div class="job-thumb favourite-box for-rating">
+				<div class="job-row">
+                                    <h4 class="paddingtop0">Posted By :</h4> 
+					<div class="favourite-holder setSize">
+						<a href="viewclient.php?id=<?php echo $memid ?>"><?php if($about_res2[image] ==""){ ?>
+								<img src="images/user.png" alt=""/>
+							<?php } else { ?>
+							<div class="photograph">	
+								<img src="uploads/users/<?php echo $about_res2[image] ?>" alt=""/>
+							</div>
+							<?php } ?>
+                                                </a>
+					</div>
+					<div class="favourite-dtl">
+						<h3><a href="viewclient.php?id=<?php echo $memid ?>"><?php echo $about_res2[first_name] ?> <?php echo $about_res2[last_name] ?></a>
+<!--						<div class="rating-right">
+							<div class="rating-div">							
+								 <?php /* if($rateval>='0.5' && $rateval<'1.5'){
+									echo '<img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>';									
+									} else if($rateval>='1.5' && $rateval<'2.5'){
+										echo '<img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>';	
+									} else if($rateval>='2.5' && $rateval<'3.5'){
+										echo '<img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>';	
+									}else if($rateval>='3.5' && $rateval<'4.5'){
+										echo '<img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>';	
+									}else if($rateval>='4.5' && $rateval<='5'){
+										echo '<img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>
+										 <img src="images/star-yellow.png" alt="star"/>';	
+									} else {
+										echo '<img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>
+										 <img src="images/star-grey.png" alt="star"/>';
+									} */									
+								 ?>	
+								 <span class="number">( <?php // echo $con; ?> )</span>
+							</div>
+							</div>-->
+						</h3>
+					</div>
+                                    <div class="posted-dt" style="clear: both;">Posted: <?php 
+							$posted 	= $about_res[lastseen];
+							$dbtimezone = $about_res2[timezone];									
+							echo $lastseen	= converToTz($posted, $timezone, $dbtimezone);
+					?></div>
+                                    
+				</div>
+<!--				<div class="job-row favourite-detail">
+				<?php
+				/*$memberid = $memid;
+				
+				$login_que = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$loginid'");
+				$login_result = mysql_fetch_array($login_que);			
+				$login_que1 = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$memberid'");
+				$login_result1 = mysql_fetch_array($login_que1);
+				
+				if($loginid==""){			
+					$latitudeFrom = $_COOKIE['mylatitude'];
+					$longitudeFrom = $_COOKIE['mylongitude'];
+				} else {				
+					$latitudeFrom = $login_result['loginlats'];
+					$longitudeFrom = $login_result['loginlong'];
+				}	
+				
+				$latitudeTo = $login_result1['loginlats'];
+				$longitudeTo = $login_result1['loginlong'];	
+				
+				$distt = distance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, "K") . " Kilometers<br>";
+				$finaldist = $distt;*/
+				/*End*/
+				?>
+					<p style="line-height: 24px;"><span class="grey" style="font-size:12px;">Nationality:</span> 
+					<?php if($about_res2[nationality]!=""){ echo getNationality($about_res2[nationality]) ?> <br>  <?php } ?> <span class="grey" style="font-size:12px;">Area of Residence:</span> 
+                        <strong class="black"><?php if($about_res2[area]!=""){ echo $about_res2[area] ?></strong> <br> <?php } ?> 
+                        <span class="grey" style="font-size:10px;">Gender:</span>
+                        <span style="font-size:12px;"><?php if($about_res2[gender]!=""){ echo $about_res2[gender] ?> <?php } ?> </span>
+                    <span class="grey" style="font-size:10px;">MBTI Personality:</span>
+                        <span style="font-size:12px;"><?php if($about_res2[mbti]!=""){ echo getMBTI($about_res2[mbti]) ?> <?php } ?> </span>
+                     <br>   <span class="grey" style="font-size:12px;">Education:</span>
+					<?php if($about_res2[education]!=""){ echo getEducation($about_res2[education]) ?>  <?php } ?>  
+                      <br>  <span class="grey" style="font-size:12px;">degree:</span>
+					<?php if($about_res2[degree]!=""){ echo getDegree($about_res2[degree]) ?><?php } ?> 
+                      <br>  <span class="grey" style="font-size:12px;">Job Title:</span>
+					<?php if($about_res2[jobtitle]!=""){ echo $about_res2[jobtitle]; } ?></p>					 
+					<p><span class="grey" style="font-size:12px;">Freelance Service:</span> <strong class="black"><?php echo getExperience($about_res2[expsector]) ?></strong></p>
+					<span class="km-away" style="font-size:16px;"><?php echo number_format($finaldist,1).' km' ?><br>Away</span>
+				</div>-->
+			</div>
+                    <div class="job-thumb favourite-box">
+                        <div class="job-row">
+                            <div class="detail-div">
+                                <?php echo $about_res[description] ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-thumb favourite-box">
 				<div class="job-row">
 					<div class="detail-div">
 						<h4 class="paddingtop0">Skills required</h4> 					
@@ -163,111 +277,7 @@ if(isset($_POST[submit])){
 						</span> <span class="red"></span></span>		
 						</div></div>
 					</div>
-					<div class="posted-dt">Posted: <?php 
-							$posted 	= $about_res[lastseen];
-							$dbtimezone = $about_res2[timezone];									
-							echo $lastseen	= converToTz($posted, $timezone, $dbtimezone);
-					?></div>
-				</div>
-			</div>
-			<div class="job-thumb favourite-box for-rating">
-				<div class="job-row">
-					<div class="favourite-holder setSize">
-						<?php if($about_res2[image] ==""){ ?>
-								<img src="images/user.png" alt=""/>
-							<?php } else { ?>
-							<div class="photograph">	
-								<img src="uploads/users/<?php echo $about_res2[image] ?>" alt=""/>
-							</div>
-							<?php } ?>
-					</div>
-					<div class="favourite-dtl">
-						<h3><a href="viewclient.php?id=<?php echo $memid ?>"><?php echo $about_res2[first_name] ?> <?php echo $about_res2[last_name] ?></a>
-						<div class="rating-right">
-							<div class="rating-div">							
-								 <?php if($rateval>='0.5' && $rateval<'1.5'){
-									echo '<img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>';									
-									} else if($rateval>='1.5' && $rateval<'2.5'){
-										echo '<img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>';	
-									} else if($rateval>='2.5' && $rateval<'3.5'){
-										echo '<img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>';	
-									}else if($rateval>='3.5' && $rateval<'4.5'){
-										echo '<img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>';	
-									}else if($rateval>='4.5' && $rateval<='5'){
-										echo '<img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>
-										 <img src="images/star-yellow.png" alt="star"/>';	
-									} else {
-										echo '<img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>
-										 <img src="images/star-grey.png" alt="star"/>';
-									}									
-								 ?>	
-								 <span class="number">( <?php echo $con; ?> )</span>
-							</div>
-							</div>
-						</h3>
-					</div>
-				</div>
-				<div class="job-row favourite-detail">
-				<?php
-				$memberid = $memid;
-				/*Get Distance*/
-				$login_que = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$loginid'");
-				$login_result = mysql_fetch_array($login_que);			
-				$login_que1 = mysql_query("SELECT * from freelancer_mmv_member_master where member_id='$memberid'");
-				$login_result1 = mysql_fetch_array($login_que1);
-				
-				if($loginid==""){			
-					$latitudeFrom = $_COOKIE['mylatitude'];
-					$longitudeFrom = $_COOKIE['mylongitude'];
-				} else {				
-					$latitudeFrom = $login_result['loginlats'];
-					$longitudeFrom = $login_result['loginlong'];
-				}	
-				
-				$latitudeTo = $login_result1['loginlats'];
-				$longitudeTo = $login_result1['loginlong'];	
-				
-				$distt = distance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, "K") . " Kilometers<br>";
-				$finaldist = $distt;
-				/*End*/
-				?>
-					<p style="line-height: 24px;"><span class="grey" style="font-size:12px;">Nationality:</span> 
-					<?php if($about_res2[nationality]!=""){ echo getNationality($about_res2[nationality]) ?> <br>  <?php } ?> <span class="grey" style="font-size:12px;">Area of Residence:</span> 
-                        <strong class="black"><?php if($about_res2[area]!=""){ echo $about_res2[area] ?></strong> <br> <?php } ?> 
-                        <span class="grey" style="font-size:10px;">Gender:</span>
-                        <span style="font-size:12px;"><?php if($about_res2[gender]!=""){ echo $about_res2[gender] ?> <?php } ?> </span>
-                    <span class="grey" style="font-size:10px;">MBTI Personality:</span>
-                        <span style="font-size:12px;"><?php if($about_res2[mbti]!=""){ echo getMBTI($about_res2[mbti]) ?> <?php } ?> </span>
-                     <br>   <span class="grey" style="font-size:12px;">Education:</span>
-					<?php if($about_res2[education]!=""){ echo getEducation($about_res2[education]) ?>  <?php } ?>  
-                      <br>  <span class="grey" style="font-size:12px;">degree:</span>
-					<?php if($about_res2[degree]!=""){ echo getDegree($about_res2[degree]) ?><?php } ?> 
-                      <br>  <span class="grey" style="font-size:12px;">Job Title:</span>
-					<?php if($about_res2[jobtitle]!=""){ echo $about_res2[jobtitle]; } ?></p>					 
-					<p><span class="grey" style="font-size:12px;">Freelance Service:</span> <strong class="black"><?php echo getExperience($about_res2[expsector]) ?></strong></p>
-					<span class="km-away" style="font-size:16px;"><?php echo number_format($finaldist,1).' km' ?><br>Away</span>
+					
 				</div>
 			</div>
 			<?php if($loginid!=""){ ?>			
