@@ -148,7 +148,7 @@ add_member_notification($inv_result['invited_userid'], $inv_result['user_id'], '
 						<div class="date-time">
 							<span>Date:</span> <?php echo date('Y-m-d h:i A',strtotime($converted_startdate)); ?>
 							<!--<div class="time"><span>Time:</span> 2.30PM</div>-->
-							<div class="meeting-row"><span class="km"><?php echo number_format($finaldist,1).' km' ?></span></div>
+							<!-- <div class="meeting-row"><span class="km"><?php echo number_format($finaldist,1).' km' ?></span></div> -->
 						</div>											
 					</div>
 				</div>
@@ -294,7 +294,7 @@ add_member_notification($inv_result['invited_userid'], $inv_result['user_id'], '
 						<div class="date-time">
 							<span>Date:</span> <?php echo date('Y-m-d h:i A',strtotime($converted_startdate)); ?>							
 							<!--<div class="time"><span>Time:</span> 2.30PM</div>-->
-							<div class="meeting-row"><span class="km"><?php echo number_format($finaldist,1).' km' ?>
+							<!-- <div class="meeting-row"><span class="km"><?php echo number_format($finaldist,1).' km' ?> -->
 						</div>	
 												
 					</div>

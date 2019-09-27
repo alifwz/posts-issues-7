@@ -111,7 +111,7 @@ if($_REQUEST[cid]!=""){
 				
 				<span style="font-size:11px;" class="last-seen">Last seen:<?php echo $lastseen; ?></span>
 				<span style="font-size:11px;" class="days-div"><?php echo getDuration($banner_result[duration]) ?></span>
-				<span style="font-size:11px;" class="km-num"><?php echo number_format($finaldist,1).' km Away' ?></span>
+				<!-- <span style="font-size:11px;" class="km-num"><?php echo number_format($finaldist,1).' km Away' ?></span> -->
 			</div><div class="arrow-right"></div></div>
 		</div>
 		<?php } else { ?>
@@ -122,7 +122,7 @@ if($_REQUEST[cid]!=""){
 				
 				<span style="font-size:11px;" class="last-seen">Last seen:<?php echo $lastseen; ?></span>
 				<span style="font-size:11px;" class="days-div"><?php echo getDuration($banner_result[duration]) ?></span>
-				<span style="font-size:11px;" class="km-num"><?php echo number_format($finaldist,1).' km Away' ?></span>
+				<!-- <span style="font-size:11px;" class="km-num"><?php echo number_format($finaldist,1).' km Away' ?></span> -->
 			</div>
 		</div>
 	<?php } } else {
@@ -150,7 +150,7 @@ if($_REQUEST[cid]!=""){
 				
 				<span style="font-size:11px;" class="last-seen">Last seen:<?php echo $lastseen; ?></span>
 				<span style="font-size:11px;" class="days-div"><?php echo getDuration($banner_result[duration]) ?></span>
-				<span style="font-size:11px;" class="km-num"><?php echo number_format($finaldist,1).' km Away' ?></span>
+				<!-- <span style="font-size:11px;" class="km-num"><?php echo number_format($finaldist,1).' km Away' ?></span> -->
 			</div><div class="arrow-right"></div></div>
 		</div>
 

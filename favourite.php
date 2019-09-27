@@ -148,7 +148,8 @@ include "auth.php";
 					</div>
 					<div class="favourite-dtl">
 						<h3><a href="viewclient.php?id=<?php echo $memid ?>"><?php echo $about_res[first_name].' '.$about_res[last_name] ?> <br>
-						<span class="km"><?php echo number_format($finaldist,1).' km' ?></span></a></h3><p class="red">  <?php if($subcat_res[budget]!='0' && $subcat_res[duration]!='0' && $subcat_res[type]=='F') { echo "Interested if"; } else if($subcat_res[type]=='L') { echo  "Liked"; } else { echo "Interested"; } ?></p>
+						<!-- <span class="km"><?php echo number_format($finaldist,1).' km' ?></span> -->
+					</a></h3><p class="red">  <?php if($subcat_res[budget]!='0' && $subcat_res[duration]!='0' && $subcat_res[type]=='F') { echo "Interested if"; } else if($subcat_res[type]=='L') { echo  "Liked"; } else { echo "Interested"; } ?></p>
 						<div class="rating-div">							
 							 <?php if($rateval>='0.5' && $rateval<'1.5'){
 									echo '<img src="images/star-yellow.png" alt="star"/>

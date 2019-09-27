@@ -197,7 +197,7 @@ add_member_notification(0, $loginid, 'invite_rejected',1);
                                             <div class="date-time">
                                                 <span>Date Time: </span> <?php echo $meetdate; // echo date('Y-m-d h:i A', strtotime($converted_datetime));         ?>							
                                                 <p align="right"> 							
-                                                    <span class="km" style="color:#000;font-weight:400;font-size:20px;"><?php echo number_format($finaldist, 1) . ' km' ?></span>
+                                                    <!-- <span class="km" style="color:#000;font-weight:400;font-size:20px;"><?php echo number_format($finaldist, 1) . ' km' ?></span> -->
                                                 </p>	
                                             </div>
 
@@ -356,9 +356,9 @@ add_member_notification(0, $loginid, 'invite_rejected',1);
                                             <?php } ?>
                                             <div class="date-time">
                                                 <span>Date Time: </span> <?php echo date('Y-m-d h:i A', strtotime($converted_datetime)); ?>
-                                                <p align="right"> 							
+                                                <!-- <p align="right"> 							
                                                     <span class="km" style="color:#000;font-weight:400;font-size:20px;"><?php echo number_format($finaldist, 1) . ' km' ?></span>
-                                                </p>
+                                                </p> -->
                                             </div>	
                                         </a>	
                                 </div>
@@ -502,9 +502,9 @@ add_member_notification(0, $loginid, 'invite_rejected',1);
                                         <?php } ?>
                                         <div class="date-time">
                                             <span>Date Time: </span> <?php echo date('Y-m-d h:i A', strtotime($converted_datetime)); ?>
-                                            <p align="right"> 							
+                                            <!-- <p align="right"> 							
                                                 <span class="km" style="color:#000;font-weight:400;font-size:20px;"><?php echo number_format($finaldist, 1) . ' km' ?></span>
-                                            </p>
+                                            </p> -->
                                         </div>	
                                     </a>	
                                 </div>
@@ -634,9 +634,9 @@ add_member_notification(0, $loginid, 'invite_rejected',1);
                                     <a onClick="location.href = 'hire-detail-sender.php?id=<?php echo $banner_result[invitation_id]; ?>'">
                                         <div class="date-time">
                                             <span>Date Time: </span> <?php echo date('Y-m-d h:i A', strtotime($converted_datetime)); ?>							
-                                            <p align="right"> 							
+                                            <!-- <p align="right"> 							
                                                 <span class="km" style="color:#000;font-weight:400;font-size:20px;"><?php echo number_format($finaldist, 1) . ' km' ?></span>
-                                            </p>						
+                                            </p> -->						
                                         </div>
                                     </a>						
                                 </div>
@@ -771,9 +771,9 @@ add_member_notification(0, $loginid, 'invite_rejected',1);
                                         <h3><a href="viewclient.php?id=<?php echo $invitedid ?>"><?php echo $invinfo[3] . ' ' . $invinfo[4]; ?></a></h3>
                                         <div class="date-time">
                                             <span>Date Time: </span> <?php echo date('Y-m-d h:i A', strtotime($converted_datetime)); ?>
-                                            <p align="right"> 							
+                                            <!-- <p align="right"> 							
                                                 <span class="km" style="color:#000;font-weight:400;font-size:20px;"><?php echo number_format($finaldist, 1) . ' km' ?></span>
-                                            </p>
+                                            </p> -->
                                         </div>						
                                     </div>
                                 </div>				

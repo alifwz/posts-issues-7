@@ -41,6 +41,32 @@ if ($_REQUEST[cid] != "") {
 ?>
 
 <!--<form name="meetinginvite" id="meetinginvite" action="invite-request.php" method="post">-->
+    <style type="text/css">
+        .km-last-seen{margin-top:-20px;}
+        .last-seen-right{font-size:12px;}
+        @media screen and (min-width: 414px){
+            .for-rating .favourite-dtl h3 {
+                padding: 10px 0 0px 0;
+                font-size: 17px;
+            }
+        }
+        @media screen and (max-width: 450px) and (min-width: 300px){
+            .for-rating .favourite-dtl h3 {
+                font-size: 17px;
+            }
+            .last-seen-right {
+                font-size: 8px;
+            }
+        }
+        @media screen and (max-width: 450px) and (min-width: 300px){
+            .for-rating .favourite-dtl {
+                margin: 0 0 0 60px;
+            }
+            .km-last-seen {
+    margin-top: -25px;
+}
+        }
+    </style>
 <form name="meetinginvite" id="meetinginvite" action="invite-request.php" method="post">
     <!--start main-->
     <div class="main">
@@ -117,8 +143,23 @@ if ($_REQUEST[cid] != "") {
                                                 <div class="photograph"><img src="uploads/users/<?php echo $about_res[image] ?>" alt="" /></div>
                                             <?php } ?>
                                         </div>
+
                                         <div class="favourite-dtl">
                                             <h3><?php echo $about_res[first_name] . ' ' . $about_res[created]; ?></h3>
+                                            <div class="km-last-seen">
+                                               <!-- <div class="km-left"><?php
+                                                    if ($about_res[loginlats] != "") {
+                                                        echo number_format($finaldist, 1) . ' Km Away';
+                                                    } else {
+                                                        echo 'n/a Km Away';
+                                                    }
+                                                    ?></div>-->
+                                                    <div class="last-seen-right">Last seen <?php
+                                                    $lastseen = $about_res[lastseeen];
+                                                    $dbtimezone = $about_res[timezone];
+                                                    echo converToTz($lastseen, $timezone, $dbtimezone);
+                                                    ?></div>
+                                            </div>
                                             <div class="rating-right">
                                                 <div class="rating-div">
                                                     <?php
@@ -179,20 +220,7 @@ if ($_REQUEST[cid] != "") {
                                             <p><span class="grey" style="font-size:12px;">Nationality:</span> <?php echo "" . getNationality($about_res[nationality]) ?> <br> <span class="grey" style="font-size:12px;">Area of Residence:</span> <strong class="black"><?php echo $about_res[area] ?></strong> <br> <span class="grey" style="font-size:10px;">Gender:</span> <span  style="font-size:12px;"> <?php echo "  " . $about_res[gender] ?></span> <span class="grey" style="font-size:10px;">Faith:</span><span style="font-size:12px;"><?php echo "  " . $about_res[faith] ?> </span><span class="grey" style="font-size:10px;">MBTI Personality:</span> <span style="font-size:12px;"><?php echo"  " . getMBTI($about_res[mbti]) ?></span> <Br> <span class="grey" style="font-size:12px;">Education:</span> <?php echo"  " . getEducation($about_res[education]) ?> <br> <span class="grey" style="font-size:12px;">Degree:</span> <?php echo"  " . getDegree($about_res[degree]) ?><br> <span class="grey" style="font-size:12px;">Job Title:</span> <?php echo"  " . ($about_res[jobtitle]) ?> <?php //echo getSubExperience($about_res[subexpsector])                                   ?><br />
                                                 <span class="grey" style="font-size:12px;">Freelancing Service:</span> <strong class="black"><?php echo getSubExperience($about_res[subexpsector]) ?></strong></p>
 
-                                            <div class="km-last-seen">
-                                                <div class="km-left"><?php
-                                                    if ($about_res[loginlats] != "") {
-                                                        echo number_format($finaldist, 1) . ' Km Away';
-                                                    } else {
-                                                        echo 'n/a Km Away';
-                                                    }
-                                                    ?></div>
-                                                <div class="last-seen-right">Last seen <?php
-                                                    $lastseen = $about_res[lastseeen];
-                                                    $dbtimezone = $about_res[timezone];
-                                                    echo converToTz($lastseen, $timezone, $dbtimezone);
-                                                    ?></div>
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>

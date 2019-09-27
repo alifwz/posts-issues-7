@@ -150,7 +150,7 @@ if(isset($_POST[deletefavourites])){
 				?>
 					<p><span class="grey">Nationality:</span> <?php echo getNationality($about_res2[nationality]) ?> <span class="grey pipe">I</span> <?php echo getArea($about_res2[area]) ?>  <?php echo $about_res2[gender] ?>  <?php echo getMBTI($about_res2[mbti]) ?>  <?php echo getEducation($about_res2[education]) ?>    <?php echo getDegree($about_res2[degree]) ?> <?php echo getJob($about_res2[jobtitle]) ?></p>					 
 					<p><span class="grey">Freelance:</span> <strong class="black"><?php echo getExperience($about_res2[expsector]) ?></strong></p>
-					<span class="km-away"><?php echo number_format($finaldist,1).' km' ?><br>Away</span>
+					<!-- <span class="km-away"><?php echo number_format($finaldist,1).' km' ?><br>Away</span> -->
 				</div>
 			</div>
 			<div class="row intrested-edit-cancel">
