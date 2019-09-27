@@ -239,7 +239,7 @@
 	.photo-job-video a.post-a-job {border-left:2px dashed #999999;border-right:2px dashed #999999;}
 
 	a.post-a-question{ border-left: 2px dashed #999999;padding: 2px 0; }
-
+	.hr-border{border-bottom: 2px dashed #999999; width: 100%; display: inline-block; height: 0;}
 	
 
 	.for-rating .favourite-dtl p{font-size:19px;line-height:25px;padding-top:0px;  }

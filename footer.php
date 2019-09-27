@@ -153,8 +153,8 @@ $freelanceserviceid = $res[16];
                             <div class="col-4"><a data-fancybox data-type="inline" data-src="#loginPopup" href="javascript:void(0);" class="post-a-job">Post a job</a></div>
                             <div class="col-4 uploader"><a href="javascript:void(0);" data-fancybox data-type="inline" data-src="#loginPopup">Post a Video</a></div>
                         <?php } else { ?>
-                            <div class="col-12"><div class="text-center">Post A</div></div>
-                            <div class="clearfix"></div>
+                            <div class="col-12 text-center">Post A</div>
+                            <span class="clearfix hr-border"> &nbsp;</span>
                             <div class="col-3 uploader"><a href="postanimage.php">Photo</a><div class="fileContainer"></div>
                                 <!--<div class="col-4 uploader"><a href="javascript:void(0);" data-options='{"touch": false}' data-fancybox data-type="inline" data-src="#imgPopup">Post a photo</a><div class="fileContainer"></div>-->
                                 <!--<input name="photoimg" accept=".jpg, .jpeg, .png" type="file" id="post-photo-upload" required class="multi with-preview"/>
