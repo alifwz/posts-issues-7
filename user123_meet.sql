@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 27, 2019 at 06:49 AM
+-- Generation Time: Sep 27, 2019 at 04:21 PM
 -- Server version: 10.1.41-MariaDB
 -- PHP Version: 7.0.32
 
@@ -1499,7 +1499,8 @@ CREATE TABLE `freelancer_mmv_member_invitation` (
 
 INSERT INTO `freelancer_mmv_member_invitation` (`invitation_id`, `user_id`, `invited_userid`, `location`, `what3word`, `meetingdate`, `hours_minutes`, `meeting_topics`, `photoshooting`, `offeredprice`, `date`, `time`, `timezone`, `status`, `edited`, `senderedit`, `receiveredit`, `acceptedstatus`, `readstatus`, `calreadstatus`, `invitationtype`, `paypalstatus`, `userreadstatus`, `invitedreadstatus`, `invitation_return_reviewby`, `invitation_return_reviewto`) VALUES
 (1, 280, 274, 'werwe', '', '19 September 2019 01:33 PM', '02:00', 'wrwer', 1, '10', '2019-09-19 09:33:25', '', 'Asia/Karachi', 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 280, 274),
-(2, 278, 232, 'Hello Ab', '', '', '02:30', 'Tester', 1, '10', '2019-09-19 18:58:19', '', 'Asia/Kolkata', 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 278, 232);
+(2, 278, 232, 'Hello Ab', '', '', '02:30', 'Tester', 1, '10', '2019-09-19 18:58:19', '', 'Asia/Kolkata', 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 278, 232),
+(3, 226, 292, 'Gf', '', '27 September 2019 01:43 PM', '00:01', 'Cc', 1, '10', '2019-09-27 13:42:39', '', 'Asia/Kuwait', 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 226, 292);
 
 -- --------------------------------------------------------
 
@@ -1534,17 +1535,17 @@ INSERT INTO `freelancer_mmv_member_like` (`like_id`, `user_id`, `workid`, `poste
 (8, 280, 140, 280, '2019-09-19 09:16:28', 280, 0, 0, 'L', 0),
 (9, 280, 129, 278, '2019-09-19 09:17:27', 278, 0, 0, 'L', 1),
 (10, 280, 130, 278, '2019-09-19 09:17:29', 278, 0, 0, 'L', 1),
-(11, 280, 135, 226, '2019-09-19 09:21:04', 226, 0, 0, 'L', 0),
-(12, 280, 139, 226, '2019-09-19 09:22:31', 226, 0, 0, 'L', 0),
-(13, 280, 137, 226, '2019-09-19 09:22:34', 226, 0, 0, 'L', 0),
+(11, 280, 135, 226, '2019-09-19 09:21:04', 226, 0, 0, 'L', 1),
+(12, 280, 139, 226, '2019-09-19 09:22:31', 226, 0, 0, 'L', 1),
+(13, 280, 137, 226, '2019-09-19 09:22:34', 226, 0, 0, 'L', 1),
 (14, 284, 168, 284, '2019-09-20 10:22:21', 284, 0, 0, 'L', 0),
 (15, 0, 168, 284, '2019-09-20 11:19:21', 284, 0, 0, 'L', 0),
 (19, 285, 168, 284, '2019-09-20 13:42:55', 284, 0, 0, 'L', 0),
-(20, 285, 166, 226, '2019-09-20 13:44:23', 226, 0, 0, 'L', 0),
+(20, 285, 166, 226, '2019-09-20 13:44:23', 226, 0, 0, 'L', 1),
 (23, 0, 168, 284, '2019-09-20 14:23:27', 284, 0, 0, 'L', 0),
 (24, 0, 168, 284, '2019-09-20 14:23:32', 284, 0, 0, 'L', 0),
 (25, 0, 168, 284, '2019-09-20 14:23:33', 284, 0, 0, 'L', 0),
-(26, 0, 164, 226, '2019-09-20 14:24:50', 226, 0, 0, 'L', 0),
+(26, 0, 164, 226, '2019-09-20 14:24:50', 226, 0, 0, 'L', 1),
 (27, 0, 168, 284, '2019-09-21 07:22:23', 284, 0, 0, 'L', 0),
 (28, 0, 170, 274, '2019-09-23 18:19:18', 274, 0, 0, 'L', 0),
 (29, 0, 170, 274, '2019-09-23 18:19:23', 274, 0, 0, 'L', 0),
@@ -1552,7 +1553,8 @@ INSERT INTO `freelancer_mmv_member_like` (`like_id`, `user_id`, `workid`, `poste
 (31, 0, 170, 274, '2019-09-23 18:19:26', 274, 0, 0, 'L', 0),
 (32, 276, 230, 276, '2019-09-26 21:54:51', 276, 0, 0, 'L', 0),
 (33, 0, 0, 0, '2019-09-26 21:54:52', 0, 0, 0, 'L', 0),
-(34, 276, 240, 276, '2019-09-26 22:37:40', 276, 0, 0, 'L', 0);
+(34, 276, 240, 276, '2019-09-26 22:37:40', 276, 0, 0, 'L', 0),
+(35, 226, 247, 276, '2019-09-27 15:16:32', 276, 0, 0, 'L', 1);
 
 -- --------------------------------------------------------
 
@@ -1602,7 +1604,7 @@ CREATE TABLE `freelancer_mmv_member_master` (
 
 INSERT INTO `freelancer_mmv_member_master` (`member_id`, `member_user_email`, `member_password`, `first_name`, `last_name`, `gender`, `mobile`, `phone`, `country`, `area`, `nationality`, `image`, `education`, `degree`, `status`, `expsector`, `subexpsector`, `jobtitle`, `hobby`, `sporttoparticipate`, `faith`, `mbti`, `freelance`, `freelancetiming`, `talentandexp`, `lastseeen`, `timezone`, `loginlats`, `loginlong`, `verified_document`, `verifiedstatus`, `firstlogin`, `expsectornew`) VALUES
 (161, 'bestmood.95@yahoo.com', 'a4630c37706b4e823562715433c450ba', 'Mohamed Ahmed ', 'Sabbah', 'Male', '', '', '118', 'Kuwait ', 66, 'meet201913453115011548931515.jpeg', 4, 4, 1, 18, 0, 'Fitness training ', 4, 4, 'Moslem', 4, 'Instructor ', 'Free', 'As a personal trainer', '2019-01-31 13:18:08', 'Asia/Kuwait', '', '', 'uploads/images/A21E6D5A-85BE-4FB5-B615-E9E5CF06CFC11.jpeg', 1, 1, 4),
-(226, 'ps4q8i111@gmail.com', '6ffa4c50ea11e6e00e968f93baf354dd', 'Ali', 'Alshuwayea', 'Male', '', '', '118', 'Kuwait city', 118, 'E397E850-C5DC-49BA-9306-9368EB07C0A6.jpeg', 65, 13, 1, 4, 32, 'Art director  ', 5, 6, 'Muslim', 0, '', '9 am to 3pm', 'I am working with an Agency called freelancerme since 2016 as an art director ', '2019-09-27 09:25:33', 'Asia/Kuwait', '29.165728013295443', '48.10294958750724', '', 0, 1, 0),
+(226, 'ps4q8i111@gmail.com', '6ffa4c50ea11e6e00e968f93baf354dd', 'Alikdnkndnfinif', 'Alshuwayea', 'Male', '', '', '118', 'Kuwait city', 118, 'E397E850-C5DC-49BA-9306-9368EB07C0A6.jpeg', 65, 13, 1, 4, 32, 'Art director  ', 5, 6, 'Muslim', 0, '', '9 am to 3pm', 'I am working with an Agency called freelancerme since 2016 as an art director ', '2019-09-27 17:37:12', 'Asia/Kuwait', '29.165728013295443', '48.10294958750724', '', 0, 1, 0),
 (232, 'afsq8i@gmail.com', '6ffa4c50ea11e6e00e968f93baf354dd', 'Abdullah', 'Fawaz', 'Male', '', '', '118', '99', 118, 'BF836AE6-617D-47F2-951E-6FB358BBA20E.jpeg', 65, 13, 1, 4, 39, '99', 15, 6, '99', 13, '', '24/7', 'I have been working with Freelancerme Agency since 2016 as an Business development manager.', '2019-09-26 20:35:06', 'Europe/London', '', '', '', 0, 1, 123),
 (240, 'alkholaifi21@gmail.com', '835a3c85dd533454df4c558d5b17bd89', 'Faisal', 'Alkhulaifi', 'Male', '', '', '118', 'Kuwait ', 118, 'meet201912212548081566724908.jpeg', 97, 10, 1, 4, 4, 'Videographer', 36, 0, 'Muslim', 0, '', '8', 'A hobby which I started working in 2015 and I\'ve turned it to business in 2017. ', '2019-09-06 16:03:47', 'Asia/Kuwait', '', '', '', 0, 1, 85),
 (248, 'q8_aviation@yahoo.com', '75d5b3742bdaf16349d2de909f629013', 'fawaz', 'Abdullah', 'Male', '', '', '118', 'Kuwait City', 118, 'meet201917281716081566052096.jpeg', 100, 9, 1, 4, 4, 'Retired', 35, 39, '', 9, '', '11am to 11pm', 'Analytical Thinker working on UX design of mobile applications.', '2019-09-02 08:08:24', 'Asia/Kuwait', '40.20331881683717', '29.02875308825028', '', 0, 1, 76),
@@ -1621,7 +1623,7 @@ INSERT INTO `freelancer_mmv_member_master` (`member_id`, `member_user_email`, `m
 (273, 'alifawaz20013@gmail.com', 'be8a7d87ed7671cdfc1333ea6a81722c', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-12 06:11:17', 'Asia/Kuwait', NULL, NULL, NULL, NULL, NULL, NULL),
 (274, 'vvbhalani@gmail.com', '21af3e08d08460b0f3b7a119c4862e91', 'Vishal', 'Bhalani', 'Male', NULL, NULL, '102', 'gjn', 102, 'meet201915001443091568453444.jpg', 86, 11, 1, 1, 247, '', 18, 10, '', 12, '', '10 to 8', '', '2019-09-23 12:01:01', 'Asia/Kolkata', '', '', 'uploads/images/_ (3).pdf', NULL, 1, 78),
 (275, 'alifwz@mail-lab.net', 'be8a7d87ed7671cdfc1333ea6a81722c', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-15 19:45:18', 'Asia/Kuwait', NULL, NULL, NULL, NULL, NULL, NULL),
-(276, 'afs16q8@yahoo.com', '6ffa4c50ea11e6e00e968f93baf354dd', 'Talal', 'One', '', NULL, NULL, '1', 'N', 3, 'meet201919511517091568566277.jpeg', 39, 9, 1, 2, 38, 'Ka', 6, 6, '', 5, '', '24', '', '2019-09-26 21:02:59', 'Europe/London', NULL, NULL, NULL, NULL, 1, 0),
+(276, 'afs16q8@yahoo.com', '6ffa4c50ea11e6e00e968f93baf354dd', 'Talal', 'One', '', NULL, NULL, '234', 'N', 16, 'meet201919511517091568566277.jpeg', 39, 9, 1, 2, 240, 'Ka', 10, 13, '', 5, '', '24', '', '2019-09-27 17:37:49', 'Asia/Kuwait', NULL, NULL, NULL, NULL, 1, 86),
 (277, 'ajay@4thpointer.com', 'a08ee45ef214dc905e59bfcc4c263565', 'Ajay', 'Maurya', '', NULL, NULL, '102', 'India', 102, NULL, 0, 0, 1, 1, 0, '', 24, 20, '', 9, '', '', '', '2019-09-18 15:27:30', 'Asia/Kolkata', NULL, NULL, NULL, NULL, 1, 0),
 (278, 'punitahuja99@gmail.com', '823da4223e46ec671a10ea13d7823534', 'Punit', 'Ahuja', '', NULL, NULL, '102', '335701', 102, NULL, 0, 0, 1, 2, 0, '', 0, 0, '', 0, '', '', '', '2019-09-23 20:51:33', 'Asia/Kolkata', '26.902528000000004', '75.77190399999999', NULL, NULL, 1, 0),
 (279, 'marufhossen23@gmail.com', '5fa87b4113ef26b0db1e6959053c303e', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-19 01:52:11', 'Asia/Dhaka', NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1635,7 +1637,11 @@ INSERT INTO `freelancer_mmv_member_master` (`member_id`, `member_user_email`, `m
 (287, 'asjndi@asd.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-20 15:33:14', 'Asia/Karachi', NULL, NULL, NULL, NULL, NULL, NULL),
 (288, 'shahzaib.baloch02@yahoo.com', 'fc659799e26ec5f72b3cd4ca9af43d69', 'Muhammad', 'Shahzaib', 'Male', NULL, NULL, '167', 'Pindi', 167, NULL, 56, 8, 1, 2, 0, 'Designinig', 17, 24, 'Islam', 17, '', 'All time', 'i am a boy and my name is Shahzaib', '2019-09-20 19:55:12', 'Asia/Karachi', NULL, NULL, NULL, NULL, 1, 100),
 (289, 'reyvillamar@gmail.com', '5149b5fb9b9647155d4ac7f3de1eaba9', 'Test', 'Testefsf', '', NULL, NULL, '11', '234', 16, NULL, 0, 0, 1, 4, 0, '', 9, 11, '', 9, '', '', '', '2019-09-20 18:06:07', 'Europe/London', NULL, NULL, NULL, NULL, 1, 0),
-(290, 'archirayan46@gmail.com', '2b546781e5395ddc6ec5350a863d657d', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 11:42:15', 'Asia/Kolkata', NULL, NULL, NULL, NULL, NULL, NULL);
+(290, 'archirayan46@gmail.com', '2b546781e5395ddc6ec5350a863d657d', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 11:42:15', 'Asia/Kolkata', NULL, NULL, NULL, NULL, NULL, NULL),
+(291, 'jagbir.webdev@gmail.com', '40d0ae083d9d263b2074301f17be649c', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 15:21:56', 'Asia/Kolkata', NULL, NULL, NULL, NULL, NULL, NULL),
+(292, 'jamtechba@gmail.com', 'b8fe2cce17d1469985e9cbedc59458bd', 'Jamtech', 'Technologies', 'Male', NULL, NULL, '102', 'Lucknow', 102, NULL, 66, 0, 1, 16, 0, '', 6, 12, '', 5, '', '', 'Thanks ', '2019-09-27 14:02:05', 'Asia/Kolkata', NULL, NULL, NULL, NULL, 1, 0),
+(293, 'test@gmail.com', 'f925916e2754e5e03f75dd58a5733251', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 13:11:51', 'Asia/Kolkata', NULL, NULL, NULL, NULL, NULL, NULL),
+(294, 'test123@gmail.com', '9a93efa79aa9f5d35e14bc55a3e16dc4', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 13:13:25', 'Asia/Kolkata', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2383,7 +2389,12 @@ INSERT INTO `freelancer_mmv_userimages` (`id`, `userid`, `image`, `countryid`, `
 (238, 276, 'uploads/images/1569525328.png', 0, 38, 1, '', NULL, 0, '2019-09-26 22:15:28'),
 (239, 276, 'uploads/images/1569525359.png', 0, 38, 1, '', NULL, 0, '2019-09-26 22:15:59'),
 (241, 232, 'uploads/images/1569525887.png', 0, 39, 1, '', NULL, 0, '2019-09-26 22:24:47'),
-(242, 276, 'uploads/images/1569526402.png', 0, 38, 1, '', NULL, 0, '2019-09-26 22:33:22');
+(242, 276, 'uploads/images/1569526402.png', 0, 38, 1, '', NULL, 0, '2019-09-26 22:33:22'),
+(243, 292, 'uploads/images/1569568997.png', 102, 0, 1, '', 'Testing', 1, '2019-09-27 10:23:17'),
+(244, 292, 'uploads/images/1569573091.png', 102, 0, 1, '', 'LOL! About weekend!', 1, '2019-09-27 11:31:31'),
+(245, 276, 'uploads/images/1569579261.png', 0, 38, 1, '', NULL, 0, '2019-09-27 13:14:21'),
+(246, 276, 'uploads/images/1569579318.png', 0, 38, 1, '', NULL, 0, '2019-09-27 13:15:18'),
+(247, 276, 'uploads/images/1569586570.png', 1, 240, 1, '', 'Try', 1, '2019-09-27 15:16:10');
 
 -- --------------------------------------------------------
 
@@ -2458,7 +2469,7 @@ INSERT INTO `freelancer_mmv_work` (`work_id`, `filter_id`, `member_id`, `country
 (62, 222, 232, 3, 'test 1025', '', 'test 1025', '', 'test 1025', '', '14', '15', NULL, '', NULL, '2019-09-14 12:49:30', '0000-00-00 00:00:00', '2019-09-26 20:35:06', 'Europe/London', '', '', '1'),
 (63, 74, 232, 4, 'Test 1026', '', 'Test 1026', '', 'Test 1026', '', '20', '18', NULL, '', NULL, '2019-09-14 12:50:44', '0000-00-00 00:00:00', '2019-09-26 20:35:06', 'Europe/London', '', '', '1'),
 (67, 111, 232, 4, '2', '', 'V', '', 'C', '', '7', '3', NULL, '', NULL, '2019-09-14 12:59:12', '0000-00-00 00:00:00', '2019-09-26 20:35:06', 'Europe/London', '', '', '1'),
-(68, 0, 226, 3, 'The new job ever', '', 'Ccxe', '', 'Css', '', '7', '3', NULL, '', NULL, '2019-09-14 12:59:22', '0000-00-00 00:00:00', '2019-09-27 09:25:33', 'Asia/Kuwait', '', '', '1'),
+(68, 0, 226, 3, 'The new job ever', '', 'Ccxe', '', 'Css', '', '7', '3', NULL, '', NULL, '2019-09-14 12:59:22', '0000-00-00 00:00:00', '2019-09-27 17:37:12', 'Asia/Kuwait', '', '', '1'),
 (69, 46, 232, 12, 'ي', '', 'ط', '', 'ط', '', '6', '2', NULL, '', NULL, '2019-09-14 19:52:54', '0000-00-00 00:00:00', '2019-09-26 20:35:06', 'Europe/London', '', '', '1'),
 (70, 43, 232, 3, 'ب', '', ' ', '', 'ذ', '', '3', '2', NULL, '', NULL, '2019-09-14 19:58:25', '0000-00-00 00:00:00', '2019-09-26 20:35:06', 'Europe/London', '', '', '1');
 
@@ -2943,19 +2954,19 @@ ALTER TABLE `freelancer_mmv_member_details`
 -- AUTO_INCREMENT for table `freelancer_mmv_member_invitation`
 --
 ALTER TABLE `freelancer_mmv_member_invitation`
-  MODIFY `invitation_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `invitation_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `freelancer_mmv_member_like`
 --
 ALTER TABLE `freelancer_mmv_member_like`
-  MODIFY `like_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `like_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `freelancer_mmv_member_master`
 --
 ALTER TABLE `freelancer_mmv_member_master`
-  MODIFY `member_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `member_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
 
 --
 -- AUTO_INCREMENT for table `freelancer_mmv_member_photo`
@@ -3045,7 +3056,7 @@ ALTER TABLE `freelancer_mmv_timings`
 -- AUTO_INCREMENT for table `freelancer_mmv_userimages`
 --
 ALTER TABLE `freelancer_mmv_userimages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- AUTO_INCREMENT for table `freelancer_mmv_user_master`
