@@ -153,18 +153,16 @@ $freelanceserviceid = $res[16];
                             <div class="col-4"><a data-fancybox data-type="inline" data-src="#loginPopup" href="javascript:void(0);" class="post-a-job">Post a job</a></div>
                             <div class="col-4 uploader"><a href="javascript:void(0);" data-fancybox data-type="inline" data-src="#loginPopup">Post a Video</a></div>
                         <?php } else { ?>
-                            <div class="col-12 text-center">Post A</div>
-                            <span class="clearfix hr-border"> &nbsp;</span>
-                            <div class="col-3 uploader"><a href="postanimage.php">Photo</a><div class="fileContainer"></div>
+
+                            <div class="col-4 uploader"><a href="postanimage.php">Post a photo</a><div class="fileContainer"></div>
                                 <!--<div class="col-4 uploader"><a href="javascript:void(0);" data-options='{"touch": false}' data-fancybox data-type="inline" data-src="#imgPopup">Post a photo</a><div class="fileContainer"></div>-->
                                 <!--<input name="photoimg" accept=".jpg, .jpeg, .png" type="file" id="post-photo-upload" required class="multi with-preview"/>
                                 <a href="javascript:void(0);" data-fancybox data-type="inline" data-src="#videoPopup">Post a Photo</a>-->
                             </div>
-                            <div class="col-3"><a href="post-a-job.php" class="post-a-job">Job</a></div>
-                            <div class="col-3 uploader"><a href="javascript:void(0);" data-options='{"closeClickOutside":false,"touch": false}' data-fancybox data-type="inline" data-src="#videoPopup">Video</a><div class="fileContainer"></div>
+                            <div class="col-4"><a href="post-a-job.php" class="post-a-job">Post a job</a></div>
+                            <div class="col-4 uploader"><a href="javascript:void(0);" data-options='{"closeClickOutside":false,"touch": false}' data-fancybox data-type="inline" data-src="#videoPopup">Post a Video</a><div class="fileContainer"></div>
                                 <!--<a href="javascript:void(0);" data-fancybox data-type="inline" data-src="#videoPopup">Post a Video</a>
                                 <input name="videoimg" accept=".mp4" type="file" id="post-video-upload" required class="multi with-preview"/>--></div>
-                            <div class="col-3"><a href="post-a-question.php" class="post-a-question">Question</a></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -197,7 +195,6 @@ $freelanceserviceid = $res[16];
                     <?php } else { ?>
                         <a href="hire.php" class="hire-link">HIRE</a>
                     <?php } ?>
-                    
                     <a href="javascript:void(0);" id="menulink" class="menu-link slidmenu"><img src="images/menu-icon.png" alt="Menu"/></a>
                 </div>
             </div>

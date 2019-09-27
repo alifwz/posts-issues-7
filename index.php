@@ -1,18 +1,12 @@
 <?php
-/*ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);*/
-
 $page_title = 'Meetfreelancers | Best Freelance Meeting Site';
 $seo_title = 'Meetfreelancers | Best Freelance Meeting Site';
 $seo_description = "Meetfreelancers.com is the world's best freelancing and marketplace to meet and invite freelancers around the world.";
 $seo_keywords = 'meetfreelancers,jobs,meet,hire,work,employee,employer,freelancers,money,earn,influencer,register,new,webapp,rating,interested,invite,list,chat,date,friends,users,free,opportunity,experience,help,find,view,creative,web design';
 session_start();
-
 include "connection.php";
 include "header.php";
 include "functions.php";
-
 $pid = $_REQUEST[pid];
 if ($_SESSION[countryid] == "") {
     $countryid = '';
