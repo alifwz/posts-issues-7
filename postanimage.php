@@ -2,7 +2,7 @@
 session_start();
 $user_id = isset($_SESSION["SESS_MEMBER_ID"][0]) ? $_SESSION["SESS_MEMBER_ID"][0] : '';
 if (!$user_id) {
-    header("Location: https://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/index.php#login");
+    header("Location: index.php#login");
     die;
 }
 include "connection.php";
@@ -18,11 +18,12 @@ if (isset($_GET['t']) && $_GET['t'] != '') {
 }
 
 if (isset($_POST[submitimage])) {
+    $description = $_POST[description];
     $videolink = $_POST[videolink];
     $pcountry = $_POST[pcountry];
     $imageid = $_POST[imageid];
 
-    $quee = mysql_query("UPDATE freelancer_mmv_userimages SET countryid='$pcountry', website='$videolink' WHERE id='$imageid'");
+    $quee = mysql_query("UPDATE freelancer_mmv_userimages SET description='$description', countryid='$pcountry' WHERE id='$imageid'");
 
     if ($quee == 1) {
         $ppquery = mysql_query("SELECT * FROM freelancer_mmv_paypalsettings WHERE id='1'");
@@ -32,12 +33,12 @@ if (isset($_POST[submitimage])) {
 
             $countquery = mysql_query("SELECT * FROM freelancer_mmv_userimages WHERE userid='$loginid' and status = 1");
             $count_res = mysql_num_rows($countquery);
-            /*if ($count_res >= 9) {
-                mysql_query("DELETE FROM freelancer_mmv_userimages WHERE userid='$loginid' and status = 1 ORDER BY id ASC LIMIT 1");
-            }*/
+            /* if ($count_res >= 9) {
+              mysql_query("DELETE FROM freelancer_mmv_userimages WHERE userid='$loginid' and status = 1 ORDER BY id ASC LIMIT 1");
+              } */
 
             mysql_query("UPDATE freelancer_mmv_userimages SET status='1' WHERE id='$imageid'");
-            echo '<script>window.location.href="index.php?status=success"</script>';
+            echo '<script>window.location.href="index.php?status=psuccess"</script>';
         } else {
             echo '<script>window.location.href="paypal.php?type=1&uid=' . $loginid . '&imgid=' . $imageid . '"</script>';
         }
@@ -45,8 +46,17 @@ if (isset($_POST[submitimage])) {
 }
 ?>
 <style>
-    .login-main {    
-        padding: 35px 45px;
+    .login-main {
+        padding: 10px 45px !important;
+        top: 6px;
+        position: relative;
+    }
+    .fancybox-slide {
+        position: absolute;
+        top: -40px !important;
+    }
+    ::placeholder{
+        font-size: 15px
     }
 </style>
 <style>
@@ -81,12 +91,16 @@ if (isset($_POST[submitimage])) {
                     <!-- onchange="readURL(this);"-->
                     <input name="image" accept="image/*" type="file" id="image" required class="form-control " onchange="checkfile(this);"/>
                 </div>
+                <!--                <div class="form-group" style="display:none">						
+                                    <input type="hidden" name="videolink" id="videolink" class="form-control text-align-center inputbg" placeholder="Website URL">
+                                </div>-->
+                <br>
                 <div class="form-group" style="display:none">						
-                    <input type="hidden" name="videolink" id="videolink" class="form-control text-align-center inputbg" placeholder="Website URL">
-                </div>
-                <div class="form-group" style="display:none">						
-                    <select name="pcountry" id="pcountry" required class="form-control inputbg">							
-                        <option value="">-Select Country-</option>								
+                    <select style="
+                            font-size: 15px;
+                            height: 60px;
+                            " name="pcountry" id="pcountry" required class="form-control inputbg">							
+                        <option value="">Select Country</option>								
                         <?php
                         $country_query = mysql_query("SELECT * FROM `freelancer_mmv_countries` ORDER BY `freelancer_mmv_countries`.`countries_id` ASC");
                         while ($country_res = mysql_fetch_array($country_query)) {
@@ -113,13 +127,20 @@ if (isset($_POST[submitimage])) {
         <div class="login-main">		
             <form name="login" method="post" action="" enctype="multipart/form-data">
                 <input type="hidden" name="imageid" id="imageid" value="">
-                <div class="for gotpass-main">								
+                <div class="for gotpass-main">		
                     <div class="form-group">						
-                        <input type="text" name="videolink" id="videolink" class="form-control text-align-center inputbg" placeholder="Website URL" id="">
+                        <textarea style="height:300px;" maxlength="800" name="description" id="description_textarea" class="form-control text-align-center inputbg" placeholder="Say something about this photo"></textarea>
                     </div>
+                    <!--                    <div class="form-group">						
+                                            <input type="text" name="videolink" id="videolink" class="form-control text-align-center inputbg" placeholder="Website URL" id="">
+                                        </div>-->
+                    <br>
                     <div class="form-group">						
-                        <select name="pcountry" id="pcountry" required class="form-control inputbg">							
-                            <option value="">-Select Country-</option>								
+                        <select style="
+                                font-size: 15px;
+                                height: 60px;
+                                " name="pcountry" id="pcountry" required class="form-control inputbg">							
+                            <option value="">Select Country</option>								
                             <?php
                             $country_query = mysql_query("SELECT * FROM `freelancer_mmv_countries` ORDER BY `freelancer_mmv_countries`.`countries_id` ASC");
                             while ($country_res = mysql_fetch_array($country_query)) {
@@ -131,6 +152,7 @@ if (isset($_POST[submitimage])) {
                     </div>
                     <div class="col-md-4" style="">						
                     </div>
+                    <br>
                     <div class="form-group">
                         <button name="submitimage" class="button loginbtn">Submit</button>
                     </div>
