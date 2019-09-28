@@ -1497,6 +1497,12 @@
 }
 
 @media screen and (min-width:300px) and (max-width:413px) {
+	.bottom-holder-responsive {
+		height: 104px;
+	}
+}
+
+@media screen and (min-width:300px) and (max-width:413px) {
 
 	/*.for-rating .favourite-dtl h3{padding:10px 0 5px 0;font-size:22px; }*/
 
