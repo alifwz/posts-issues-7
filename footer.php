@@ -32,6 +32,11 @@ $freelanceserviceid = $res[16];
     .add-account .loged-user-img {
         display:none !important;
     </style>
+    <style>
+        ::placeholder{
+            font-size: 15px
+        }
+    </style>
     <!--start menubar-->
     <div class="menu-wrapper">
         <div class="menu-wrapper-sub">
@@ -95,7 +100,7 @@ $freelanceserviceid = $res[16];
                         <ul>
                             <li><a href="advance-search.php"><span class="menu-icon"><img src="images/icon-search.png" alt="Advance search" /></span> Advance search</a></li>
                             <?php if ($loginid != "") { ?>
-                                <li><a href="#" data-fancybox data-type="inline" data-options='{"closeClickOutside":false,"touch":false}' data-src="#loginPopup" onclick="$('#success_url').val('make-profile.php');"><span class="menu-icon"><img src="images/icon-upload-profile.png" alt="Profile" /></span> Edit Profile </a></li>
+                                <li><a href="profile.php"><span class="menu-icon"><img src="images/icon-upload-profile.png" alt="Profile" /></span> Edit Profile </a></li>
                                 <li><a href="change-password.php"><span class="menu-icon"><img src="images/icon-password.png" alt="Change Password" /></span> Change Password </a></li>
                                 <!--<li><a href="buy-tokens.php"><span class="menu-icon"><img src="images/icon-buy-tokens.png" alt="Buy Tokens" /></span> Buy Tokens</a></li>
                                 <li><a href="tokens-balance.php"><span class="menu-icon"><img src="images/icon-tokens-balance.png" alt="Tokens balance" /></span> Tokens balance</a></li>-->
@@ -104,7 +109,7 @@ $freelanceserviceid = $res[16];
                                     <li><a href="veryfied-user.php"><span class="menu-icon"><img src="images/icon-verified.png" alt="Verified User" /></span> Verified User</a></li>
                                 <?php } ?>
                             <?php } else { ?>
-                                 <li><a href="#" data-fancybox data-type="inline" data-options='{"closeClickOutside":false,"touch":false}' data-src="#loginPopup" onclick="$('#success_url').val('make-profile.php');"><span class="menu-icon"><img src="images/icon-upload-profile.png" alt="Profile" /></span> Edit Profile </a></li>
+                                <li><a href="#" data-fancybox data-type="inline" data-options='{"closeClickOutside":false,"touch":false}' data-src="#loginPopup"><span class="menu-icon"><img src="images/icon-upload-profile.png" alt="Profile" /></span> Edit Profile </a></li>
                                 <li><a href="#" data-fancybox data-type="inline" data-options='{"closeClickOutside":false,"touch":false}' data-src="#loginPopup"><span class="menu-icon"><img src="images/icon-password.png" alt="Change Password" /></span> Change Password </a></li>
                                 <!--<li><a href="#" data-fancybox data-type="inline" data-options='{"closeClickOutside":false,"touch":false}' data-src="#loginPopup"><span class="menu-icon"><img src="images/icon-buy-tokens.png" alt="Buy Tokens" /></span> Buy Tokens</a></li>
                                 <li><a href="#" data-fancybox data-type="inline" data-options='{"closeClickOutside":false,"touch":false}' data-src="#loginPopup"><span class="menu-icon"><img src="images/icon-tokens-balance.png" alt="Tokens balance" /></span> Tokens balance</a></li>-->
@@ -207,7 +212,6 @@ $freelanceserviceid = $res[16];
                     <input type="hidden" name="now" id="now" value="<?php echo $now ?>">
                     <input type="hidden" name="lats" id="lats" value="">
                     <input type="hidden" name="long" id="long" value="">
-                     <input type="hidden" name="success_url" id="success_url" value="index.php?status=updateprof">
                     <div class="form-group">
                         <input type="text" name="lusername" required class="form-control text-align-center inputbg" placeholder="Email address" id="lusername">
                     </div>
@@ -234,7 +238,6 @@ $freelanceserviceid = $res[16];
                         </div>
                         <div class="form-group">
                             <button type="submit" name="forgot" class="button loginbtn">Reset Password</button>
-                           
                         </div>
                     </div>
                 </form>
@@ -283,8 +286,16 @@ $freelanceserviceid = $res[16];
             </form>
         </div>
         <?php if ($loginid) { ?>
+            <style>
+                .fancybox-slide {
+                    position: absolute;
+                    top: -40px !important;
+                }
+            </style>
             <div id="videoPopup" class="popupbox text-align-center">
-                <div class="login-main">
+                <div class="login-main" style="padding: 10px 45px !important;
+                     top: 6px;
+                     position: relative;">
                     <form name="login" method="post" action="submitvideo.php" enctype="multipart/form-data">
                         <input type="hidden" name="freelanceserviceid" id="freelanceserviceid" value="<?php echo $freelanceserviceid; ?>">
                         <div class="for gotpass-main">
@@ -292,11 +303,15 @@ $freelanceserviceid = $res[16];
                                 <input name="videoimg" accept=".mp4,.mov,.MOV,.MP4" type="file" onchange="checkFileDuration()" id="videoimg" required class="form-control with-preview inputbg"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="videolink" class="form-control text-align-center inputbg" placeholder="Website URL" id="">
+                                <!--<input type="text" name="videolink" class="form-control text-align-center inputbg" placeholder="Website URL" id="">-->
+                                <textarea style="height:300px;" maxlength="800" name="description" id="description_textarea" class="form-control text-align-center inputbg" placeholder="Say something about this video"></textarea>
                             </div>
                             <div class="form-group">
-                                <select name="pcountry" id="pcountry" required class="form-control inputbg">
-                                    <option value="">-Select Country-</option>
+                                <select style="
+                                        font-size: 15px;
+                                        height: 60px;
+                                        "  name="pcountry" id="pcountry" required class="form-control inputbg">
+                                    <option value="">Select Country</option>
                                     <?php
                                     $country_query = mysql_query("SELECT * FROM `freelancer_mmv_countries` ORDER BY `freelancer_mmv_countries`.`countries_id` ASC");
                                     while ($country_res = mysql_fetch_array($country_query)) {
@@ -1101,6 +1116,17 @@ $freelanceserviceid = $res[16];
             $('#login_btn').trigger("click");
         }
     }
+
+    $(document).on('keyup', '#description_textarea', function () {
+        var ch = $(this).val();
+        if (ch != '') {
+            var filter = /[a-zA-Z]/;
+            if (!filter.test(ch)) {
+                $(this).val('');
+                alert('Please use English language.');
+            }
+        }
+    })
 </script>
 <?php
 $url = "https://" . $_SERVER[HTTP_HOST] . strtok($_SERVER["REQUEST_URI"], '?');
