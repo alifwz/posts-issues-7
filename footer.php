@@ -4,6 +4,30 @@ $res = mysql_fetch_array($query);
 $freelanceserviceid = $res[16];
 ?>
 <style>
+    .register-container {
+        float: left;
+    }
+    .login-container {
+        float: right;
+    }
+    .login-container div {
+        float: left;
+    }
+    .register-link {
+        width: 100px;
+        left: 5%;
+        background: none;
+        color: black;
+    }
+    .login-link {
+        right: 5%;
+        background: none;
+        color: black;
+    }
+    .already-a-member {
+        width: 240px;
+        margin-top: 7px;
+    }
     .fancybox-close-small:after {
         content: "x";
         background: red !important;
@@ -137,6 +161,27 @@ $freelanceserviceid = $res[16];
     <!--end menubar-->
     <!--start bottom bar-->
     <div class="bottom-holder">
+        <?php 
+         if($loginid == "") {
+        ?>
+        <script type="text/javascript">
+            $('.bottom-holder').css('height','110px');
+            $('.bottom-holder').addClass('bottom-holder-responsive');
+        </script>
+        <div class="sub-bottom-bar register-login-container">
+            <div class="work-hire-main">
+                <div class="container clearfix">
+                    <div class="register-container">
+                        <a href="register.php" class="work-link register-link">Register</a>
+                    </div>
+                    <div class="login-container">
+                        <div class="already-a-member">Already a member ?</div>
+                        <div><a href="#" data-fancybox data-type="inline" data-src="#loginPopup" class="hire-link login-link">Login</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
         <div class="sub-bottom-bar">
             <!--<div class="photo-job-video">
                     <div class="row">
@@ -1127,6 +1172,8 @@ $freelanceserviceid = $res[16];
             }
         }
     })
+
+
 </script>
 <?php
 $url = "https://" . $_SERVER[HTTP_HOST] . strtok($_SERVER["REQUEST_URI"], '?');
